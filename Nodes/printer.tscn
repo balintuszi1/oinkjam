@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://8uuun8iopgac"]
+
+[ext_resource type="Script" uid="uid://bgmaau2im4brm" path="res://Scripts/printer.gd" id="1_wndy4"]
+[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="2_gshth"]
+[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://printer_unloaded.png" id="2_wndy4"]
+[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://printer_loadpaper.png" id="3_ekavr"]
+[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://printer_paperfront.png" id="4_yks5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
+size = Vector2(62, 40)
+
+[node name="Printer" type="Area2D"]
+script = ExtResource("1_wndy4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wndy4")
+
+[node name="input" type="Sprite2D" parent="."]
+texture = ExtResource("3_ekavr")
+
+[node name="output" type="Sprite2D" parent="."]
+texture = ExtResource("4_yks5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_344ge")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -55.0
+offset_right = 40.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_gshth")
+text = "Press E to get paper"
+autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://2ga7mnpgn7xi"]
+[gd_scene load_steps=15 format=3 uid="uid://2ga7mnpgn7xi"]
 
 [ext_resource type="PackedScene" uid="uid://o0ik5522xass" path="res://Nodes/player.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://ytqt6bnn05yw" path="res://Scripts/main.gd" id="1_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://dahfbw3y7rtn1" path="res://Nodes/desk.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="5_21xkr"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="5_kry3j"]
+[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://printer_paperfront.png" id="6_hptm8"]
+[ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://printer_paper2.png" id="7_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://printer_paper3.png" id="8_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://printer_loadpaper.png" id="9_fdnlq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
 size = Vector2(490, 20)
@@ -52,7 +57,15 @@ texture = ExtResource("2_8gbba")
 [node name="Stations" type="Node2D" parent="."]
 
 [node name="Desk" parent="Stations" instance=ExtResource("4_jjvhh")]
-position = Vector2(173, 235)
+position = Vector2(173, 240)
+requires_paper = true
+
+[node name="Printer" parent="Stations" instance=ExtResource("5_21xkr")]
+position = Vector2(405, 237)
+texture_paper_1 = ExtResource("6_hptm8")
+texture_paper_2 = ExtResource("7_d1ilt")
+texture_paper_3 = ExtResource("8_6iyac")
+texture_paper_loaded = ExtResource("9_fdnlq")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -77,3 +90,4 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="is_player_working" from="Stations/Desk" to="." method="_on_desk_is_player_working"]
 [connection signal="reward" from="Stations/Desk" to="." method="_on_desk_reward"]
+[connection signal="give_paper" from="Stations/Printer" to="." method="_on_printer_give_paper"]

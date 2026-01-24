@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://o0ik5522xass"]
 
-[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_aoxlc"]
 [ext_resource type="Script" uid="uid://dkepv1efo4q1j" path="res://Scripts/player.gd" id="1_qlfej"]
+[ext_resource type="Texture2D" uid="uid://baxgv5e5e77ox" path="res://pigSprite.png" id="2_qlfej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlfej"]
-size = Vector2(128, 128)
+size = Vector2(17, 40)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(0.25, 0.25)
 script = ExtResource("1_qlfej")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
-texture = ExtResource("1_aoxlc")
+texture = ExtResource("2_qlfej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_qlfej")

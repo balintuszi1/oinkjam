@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://crg8aortx06kg"
-path="res://.godot/imported/edit-undo.brk.ttf-770dd27b7429621ee5065088e87b5c86.fontdata"
+path="res://.godot/imported/edit-undo.brk.ttf-b55094ebb052210f0b743eadb309830e.fontdata"
 
 [deps]
 
-source_file="res://edit-undo.brk.ttf"
-dest_files=["res://.godot/imported/edit-undo.brk.ttf-770dd27b7429621ee5065088e87b5c86.fontdata"]
+source_file="res://Other assets/edit-undo.brk.ttf"
+dest_files=["res://.godot/imported/edit-undo.brk.ttf-b55094ebb052210f0b743eadb309830e.fontdata"]
 
 [params]
 

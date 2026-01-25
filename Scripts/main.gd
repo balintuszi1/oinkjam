@@ -1,17 +1,37 @@
 extends Node2D
 
-@onready var player = $Player
+@onready var player = null
 @onready var score_label = $UI/Score
-@onready var desk = $Stations/Desk
-@onready var printer = $Stations/Printer
+@onready var floors_container = $Floors
+
+@export var main_office: PackedScene
+@export var room1: PackedScene
 
 var level = 1
-var floor = 1
+var current_floor = 1
 
 var money = 0
 
+func _ready() -> void:
+	player = get_player()
+	Global.give_documents.connect(_on_printer_give_paper)
+	Global.is_player_working.connect(_on_desk_is_player_working)
+	Global.add_money.connect(_on_desk_reward)
+	Global.is_player_in_elevator.connect(_on_player_elevator)
+	Global.move_floors.connect(_on_elevator_move)
+	
+	create_level()
+	create_player()
+
 func _on_desk_is_player_working(work: Variant) -> void:
-	player.work(work)
+	player.freeze_movement(work)
+	
+func _on_player_elevator(value: Variant) -> void:
+	player.freeze_movement(value)
+	
+func _on_elevator_move(amount: Variant) -> void:
+	Global.current_floor += amount
+	move_player()
 
 func _on_desk_reward(amount: Variant) -> void:
 	money += amount
@@ -21,4 +41,45 @@ func load_floor(level, floor):
 	pass
 
 func _on_printer_give_paper(amount: Variant) -> void:
-	desk.papers += 1
+	player.pickup_item("paper")
+
+func get_player():
+	if Global.player: return Global.player
+	
+func get_all_floors():
+	var floors = []
+	for i in range(floors_container.get_child_count()):
+		if floors_container.get_child(i).get_child_count() > 0: floors.append(floors_container.get_child(i).get_child(0))
+	return floors
+	
+func get_floor(number):
+	var all_floors = get_all_floors()
+	if floors_container.get_child_count() >= number:
+		if floors_container.get_child(number).get_child_count() > 0:
+			return floors_container.get_child(number).get_child(0)
+
+func create_player():
+	var all_floors = get_all_floors()
+	var main_room = null
+	player = get_player()
+	
+	for room in all_floors:
+		if room.has_meta("office"):
+			if room.get_meta("office") == true:
+				main_room = room
+				break
+	
+	player.reparent(main_room)
+
+func create_level(amount=10, office_location=0):
+	var office = main_office.instantiate()
+	floors_container.get_child(office_location).add_child(office)
+	for i in range(floors_container.get_child_count()):
+		if floors_container.get_child(i).get_child_count() == 0: 
+			var room = room1.instantiate()
+			floors_container.get_child(i).add_child(room)
+
+func move_player():
+	player = get_player()
+	print(Global.current_floor)
+	player.global_position = Vector2(player.global_position.x, Global.get_floor_y())

@@ -1,8 +1,5 @@
 extends Area2D
 
-signal is_player_working(work)
-signal reward(amount)
-
 @onready var progress_UI = $UI
 @onready var progress_bar = $UI/ProgressBar
 @onready var progress_label = $UI/Label
@@ -33,6 +30,9 @@ func _on_body_entered(body: Node2D) -> void:
 		working_player = body
 		progress_label.text = "Press E to work"
 		progress_UI.show()
+		if working_player.has_item("paper"):
+			papers += working_player.has_item("paper")
+			working_player.use_item("paper", working_player.has_item("paper"))
 		if work_progress <= 0: progress_bar.hide()
 		print("Player is at the station")
 
@@ -66,8 +66,8 @@ func work(delta):
 			progress_UI.hide()
 
 func begin_work(player:Node2D):
-	is_player_working.emit(true)
-	player.position = Vector2(self.position.x, self.position.y-16) 
+	Global.is_player_working.emit(true)
+	player.global_position = Vector2(self.global_position.x, self.global_position.y-16) 
 	progress_label.text = "Hold SPACE to work"
 	progress_bar.show()
 	is_at_desk = true
@@ -76,21 +76,21 @@ func complete_work():
 	progress_label.text = "Hold SPACE to work"
 	if requires_paper: papers -= 1
 	work_progress = 0
-	reward.emit(1)
+	Global.add_money.emit(1)
 	
 func leave_desk(player:Node2D, direction = null):
 	if player.is_in_group("player"):
 		if direction == "right":
-			player.position = Vector2(self.position.x+30, 234)
+			player.global_position = Vector2(self.global_position.x+30, Global.get_floor_y())
 		elif direction == "left":
-			player.position = Vector2(self.position.x-30, 234)
+			player.global_position = Vector2(self.global_position.x-30, Global.get_floor_y())
 		else:
-			player.position = Vector2(self.position.x, 234)
+			player.global_position = Vector2(self.global_position.x, Global.get_floor_y())
 		working_player = player
 		is_at_desk = false
 		progress_label.text = "Press E to work"
 		progress_UI.show()
-		is_player_working.emit(false)
+		Global.is_player_working.emit(false)
 		if work_progress <= 0: progress_bar.hide()
 		print("Player is at the station")
 

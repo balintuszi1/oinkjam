@@ -1,7 +1,5 @@
 extends Area2D
 
-signal give_paper(amount)
-
 @onready var printer_label = $UI/Label
 @export var papers = 10
 @export var requires_paper = false
@@ -14,7 +12,6 @@ signal give_paper(amount)
 @onready var paper_tray = $input
 
 var player = null
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -30,17 +27,18 @@ func _ready() -> void:
 	update_texture()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player and papers > 0:
-		papers -= 1
-		give_paper.emit(1)
+	if Input.is_action_just_pressed("interact") and player and (papers > 0 or !Global.printer_requires_paper):
+		if Global.printer_requires_paper:
+			papers -= 1
+		Global.give_documents.emit(1)
 		update_texture()
 		if papers <= 0:
 			printer_label.text = "Out of paper!"
 		
 func update_texture():
-	if papers >= 5:
+	if papers >= 6:
 		front_tray.texture = texture_paper_3
-	elif papers >= 3:
+	elif papers >= 4:
 		front_tray.texture = texture_paper_2
 	elif papers >= 1:
 		front_tray.texture = texture_paper_1

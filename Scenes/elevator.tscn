@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://budggg3mpex3v"]
+
+[ext_resource type="Script" uid="uid://dyu5t76mn2c3u" path="res://Scripts/elevator.gd" id="1_7i85y"]
+[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_cyba6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i85y"]
+size = Vector2(34, 54)
+
+[node name="Elevator" type="Area2D"]
+script = ExtResource("1_7i85y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.86102e-06, 0)
+scale = Vector2(0.273438, 0.414062)
+texture = ExtResource("1_cyba6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7i85y")
+
+[node name="UI" type="Node2D" parent="."]
+visible = false
+
+[node name="Up" type="TextureRect" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -69.0
+offset_right = 20.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_cyba6")
+expand_mode = 2
+
+[node name="Down" type="TextureRect" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 29.0
+offset_right = 20.0
+offset_bottom = 69.0
+grow_horizontal = 2
+texture = ExtResource("1_cyba6")
+expand_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

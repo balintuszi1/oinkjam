@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bgmaau2im4brm" path="res://Scripts/printer.gd" id="1_wndy4"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="2_gshth"]
-[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://printer_unloaded.png" id="2_wndy4"]
-[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://printer_loadpaper.png" id="3_ekavr"]
-[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://printer_paperfront.png" id="4_yks5k"]
+[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="2_wndy4"]
+[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="3_ekavr"]
+[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_yks5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(62, 40)
@@ -42,6 +42,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_gshth")
 text = "Press E to get paper"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

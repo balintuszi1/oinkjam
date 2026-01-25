@@ -1,71 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://2ga7mnpgn7xi"]
+[gd_scene load_steps=6 format=3 uid="uid://2ga7mnpgn7xi"]
 
 [ext_resource type="PackedScene" uid="uid://o0ik5522xass" path="res://Nodes/player.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://ytqt6bnn05yw" path="res://Scripts/main.gd" id="1_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dahfbw3y7rtn1" path="res://Nodes/desk.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="5_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dtqkhrtew068i" path="res://Nodes/office.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://osdeoac1tsg0" path="res://Nodes/generic_room.tscn" id="5_21xkr"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="5_kry3j"]
-[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://printer_paperfront.png" id="6_hptm8"]
-[ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://printer_paper2.png" id="7_d1ilt"]
-[ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://printer_paper3.png" id="8_6iyac"]
-[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://printer_loadpaper.png" id="9_fdnlq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
-size = Vector2(490, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
-size = Vector2(20, 283)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
-size = Vector2(23, 283)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
-size = Vector2(494, 22)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jjvhh")
+main_office = ExtResource("3_jjvhh")
+room1 = ExtResource("5_21xkr")
 
 [node name="Player" parent="." instance=ExtResource("1_bo1nx")]
 position = Vector2(104, 234)
-
-[node name="Environment" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
-
-[node name="Ceiling" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(235, 0)
-shape = SubResource("RectangleShape2D_jjvhh")
-
-[node name="WallLeft" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(10, 133)
-shape = SubResource("RectangleShape2D_kry3j")
-
-[node name="WallRight" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(468.5, 131.5)
-shape = SubResource("RectangleShape2D_21xkr")
-
-[node name="Floor" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(237, 264)
-shape = SubResource("RectangleShape2D_6bp64")
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/StaticBody2D/Floor"]
-position = Vector2(-0.499995, 0.499997)
-scale = Vector2(3.83594, 0.164062)
-texture = ExtResource("2_8gbba")
-
-[node name="Stations" type="Node2D" parent="."]
-
-[node name="Desk" parent="Stations" instance=ExtResource("4_jjvhh")]
-position = Vector2(173, 240)
-requires_paper = true
-
-[node name="Printer" parent="Stations" instance=ExtResource("5_21xkr")]
-position = Vector2(405, 237)
-texture_paper_1 = ExtResource("6_hptm8")
-texture_paper_2 = ExtResource("7_d1ilt")
-texture_paper_3 = ExtResource("8_6iyac")
-texture_paper_loaded = ExtResource("9_fdnlq")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -78,16 +25,32 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -119.0
-offset_top = 10.0
-offset_right = -23.0
-offset_bottom = 33.0
+offset_left = -81.0
+offset_bottom = 23.0
 grow_horizontal = 0
 theme = ExtResource("5_kry3j")
-text = "Money: "
+text = "Money:"
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[connection signal="is_player_working" from="Stations/Desk" to="." method="_on_desk_is_player_working"]
-[connection signal="reward" from="Stations/Desk" to="." method="_on_desk_reward"]
-[connection signal="give_paper" from="Stations/Printer" to="." method="_on_printer_give_paper"]
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="position1" type="Marker2D" parent="Floors"]
+position = Vector2(240, 270)
+
+[node name="position2" type="Marker2D" parent="Floors"]
+position = Vector2(240, 0)
+
+[node name="position3" type="Marker2D" parent="Floors"]
+position = Vector2(240, -270)
+
+[node name="position4" type="Marker2D" parent="Floors"]
+position = Vector2(240, -540)
+
+[node name="position5" type="Marker2D" parent="Floors"]
+position = Vector2(240, -810)
+
+[node name="position6" type="Marker2D" parent="Floors"]
+position = Vector2(240, -1080)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 135)

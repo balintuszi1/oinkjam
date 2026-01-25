@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://dtqkhrtew068i"]
+
+[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_eqlnk"]
+[ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_od5wd"]
+[ext_resource type="PackedScene" uid="uid://dahfbw3y7rtn1" path="res://Nodes/desk.tscn" id="2_o84nh"]
+[ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="3_2vylc"]
+[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_4luf0"]
+[ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://Sprites/printer_paper2.png" id="5_q644x"]
+[ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://Sprites/printer_paper3.png" id="6_rs1ao"]
+[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="7_o2cca"]
+[ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_o84nh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(480, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(20, 283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
+size = Vector2(23, 283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
+size = Vector2(494, 22)
+
+[node name="Office" type="Node2D"]
+metadata/office = true
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, -135)
+texture = ExtResource("1_od5wd")
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2(-240, -270)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
+
+[node name="Ceiling" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(240, 0)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(10, 133)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="WallRight" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(468.5, 131.5)
+shape = SubResource("RectangleShape2D_21xkr")
+
+[node name="Floor" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(237, 264)
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/StaticBody2D/Floor"]
+modulate = Color(0, 1, 0.941176, 1)
+position = Vector2(-0.499995, 0.499997)
+scale = Vector2(3.83594, 0.164062)
+texture = ExtResource("1_eqlnk")
+
+[node name="Stations" type="Node2D" parent="."]
+position = Vector2(-240, -270)
+
+[node name="Desk" parent="Stations" instance=ExtResource("2_o84nh")]
+z_index = 1
+position = Vector2(173, 240)
+requires_paper = true
+
+[node name="Printer" parent="Stations" instance=ExtResource("3_2vylc")]
+position = Vector2(405, 237)
+texture_paper_1 = ExtResource("4_4luf0")
+texture_paper_2 = ExtResource("5_q644x")
+texture_paper_3 = ExtResource("6_rs1ao")
+texture_paper_loaded = ExtResource("7_o2cca")
+
+[node name="Elevator" parent="Stations" instance=ExtResource("8_o84nh")]
+position = Vector2(290, 228)

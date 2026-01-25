@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://osdeoac1tsg0"]
+
+[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_l452t"]
+[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="3_geovy"]
+[ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_m65rv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(480, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(20, 283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
+size = Vector2(23, 283)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
+size = Vector2(494, 22)
+
+[node name="Room" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2(-240, -270)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
+
+[node name="Ceiling" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(240, 0)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(10, 133)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="WallRight" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(468.5, 131.5)
+shape = SubResource("RectangleShape2D_21xkr")
+
+[node name="Floor" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(237, 264)
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/StaticBody2D/Floor"]
+modulate = Color(0, 1, 0.941176, 1)
+position = Vector2(-0.499995, 0.499997)
+scale = Vector2(3.83594, 0.164062)
+texture = ExtResource("1_l452t")
+
+[node name="Stations" type="Node2D" parent="."]
+position = Vector2(-240, -270)
+
+[node name="Elevator" parent="Stations" instance=ExtResource("8_m65rv")]
+position = Vector2(290, 228)
+
+[node name="Printer" type="Sprite2D" parent="Stations"]
+position = Vector2(48, 238)
+texture = ExtResource("3_geovy")
+flip_h = true

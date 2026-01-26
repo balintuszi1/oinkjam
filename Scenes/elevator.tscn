@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://budggg3mpex3v"]
+[gd_scene load_steps=6 format=3 uid="uid://budggg3mpex3v"]
 
 [ext_resource type="Script" uid="uid://dyu5t76mn2c3u" path="res://Scripts/elevator.gd" id="1_7i85y"]
 [ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_cyba6"]
+[ext_resource type="Texture2D" uid="uid://olgxvqe5w2gc" path="res://Sprites/down_arrow.png" id="3_jd6vs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i85y"]
 size = Vector2(34, 54)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7i85y"]
+load_path = "res://.godot/imported/up_arrow.png-a3423e26eda521d8666a2e4e1009e6ce.ctex"
 
 [node name="Elevator" type="Area2D"]
 script = ExtResource("1_7i85y")
@@ -26,26 +30,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -69.0
-offset_right = 20.0
+offset_left = -16.0
+offset_top = -45.0
+offset_right = 16.0
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("1_cyba6")
-expand_mode = 2
+texture = SubResource("CompressedTexture2D_7i85y")
 
 [node name="Down" type="TextureRect" parent="UI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 29.0
-offset_right = 20.0
-offset_bottom = 69.0
+offset_left = -16.0
+offset_top = 28.0
+offset_right = 16.0
+offset_bottom = 44.0
 grow_horizontal = 2
-texture = ExtResource("1_cyba6")
-expand_mode = 2
+texture = ExtResource("3_jd6vs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

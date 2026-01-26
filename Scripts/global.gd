@@ -12,10 +12,13 @@ signal move_floors(amount)
 
 ### VARIABLES ###
 var player = null
+var active_elevator = null
+
+const MAX_FLOORS = 12
 
 var acorns = 0
 var current_floor = 1
-var ground_height = 234
+var ground_height = 230
 var window_height = 270
 #var is_desk_active = true
 #var is_printer_active = true

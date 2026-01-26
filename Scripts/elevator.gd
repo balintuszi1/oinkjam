@@ -1,56 +1,65 @@
 extends Area2D
 
 @onready var ui = $UI
+@onready var up_arrow = $UI/Up
+@onready var down_arrow = $UI/Down
 
 var player = null
-var is_in_elevator = false
+static var is_in_elevator = false
+static var offset_y = 228-Global.ground_height
+static var offset_x = 0
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and player and !is_in_elevator:
-		player.global_position = Vector2(self.global_position.x, self.global_position.y)
-		Global.is_player_in_elevator.emit(true)
-		ui.show()
-		is_in_elevator = true
-	elif player and is_in_elevator:
-		movement_handler()
-		
-
+	if player:
+		if Input.is_action_just_pressed("interact"):
+			if is_in_elevator:
+				on_elevator_leave()
+			else:
+				on_elevator_enter()
+		if Input.is_action_just_pressed("move_left") and is_in_elevator: on_elevator_leave("left")
+		if Input.is_action_just_pressed("move_right") and is_in_elevator: on_elevator_leave("right")
+	
+	if Global.active_elevator == self:
+		if Input.is_action_just_pressed("move_up") and Global.current_floor < Global.MAX_FLOORS:
+			Global.move_floors.emit(1)
+			inactivate()
+		elif Input.is_action_just_pressed("move_down") and Global.current_floor > 1:
+			Global.move_floors.emit(-1)
+			inactivate()
+			
+func on_elevator_enter():
+	Global.active_elevator = self
+	Global.is_player_in_elevator.emit(true)
+	ui.show()
+	is_in_elevator = true
+	
+func on_elevator_leave(direction=null):
+	Global.active_elevator = null
+	Global.is_player_in_elevator.emit(false)
+	leave(player, direction)
+	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-
+		
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		if !is_in_elevator:
-			player = null
-			ui.hide()
+		player = null
 
-func movement_handler():
-	if Input.is_action_just_pressed("move_left"):
-		leave(player, "left")
-		return
-	if Input.is_action_just_pressed("move_right"):
-		leave(player, "right")
-		return
-	if Input.is_action_just_pressed("interact"):
-		leave(player)
-		return
-	if Input.is_action_just_pressed("move_up"):
-		Global.move_floors.emit(1)
-		return
-	if Input.is_action_just_pressed("move_down"):
-		Global.move_floors.emit(-1)
-		return
+func inactivate():
+	player = null
+	ui.hide()
 	
+func activate():
+	Global.active_elevator = self
+	ui.show()
 
-func leave(current_player:Node2D, direction = null):
-	if current_player.is_in_group("player"):
-		if direction == "right":
-			current_player.global_position = Vector2(self.global_position.x+6, Global.get_floor_y())
-		elif direction == "left":
-			current_player.global_position = Vector2(self.global_position.x-6, Global.get_floor_y())
-		else:
-			current_player.global_position = Vector2(self.global_position.x, Global.get_floor_y())
+func leave(player:Node2D, direction = null):
+	var pos_x = self.global_position.x
+	if player.is_in_group("player"):
+		if direction == "right": pos_x = self.global_position.x+offset_x
+		elif direction == "left": pos_x = self.global_position.x-offset_x
+		else: pos_x = self.global_position.x
+		player.global_position = Vector2(pos_x, Global.get_floor_y()-offset_y)
 		ui.hide()
-		Global.is_player_in_elevator.emit(false)
 		is_in_elevator = false

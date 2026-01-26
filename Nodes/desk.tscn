@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dahfbw3y7rtn1"]
 
-[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_bepco"]
 [ext_resource type="Script" uid="uid://cj7vpqb33hp0n" path="res://Nodes/desk.gd" id="1_mu7sr"]
+[ext_resource type="Texture2D" uid="uid://c8ykr65j1dlay" path="res://Sprites/desk.png" id="2_bo547"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="3_bo547"]
 [ext_resource type="FontFile" uid="uid://crg8aortx06kg" path="res://Other assets/edit-undo.brk.ttf" id="3_udxb7"]
 
@@ -12,8 +12,8 @@ size = Vector2(52, 48)
 script = ExtResource("1_mu7sr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["desk"]]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_bepco")
+position = Vector2(-15, -3)
+texture = ExtResource("2_bo547")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["desk"]]
 shape = SubResource("RectangleShape2D_344ge")

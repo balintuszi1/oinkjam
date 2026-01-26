@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_yks5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
-size = Vector2(62, 40)
+size = Vector2(39, 40)
 
 [node name="Printer" type="Area2D"]
 script = ExtResource("1_wndy4")
@@ -22,7 +22,7 @@ texture = ExtResource("3_ekavr")
 texture = ExtResource("4_yks5k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(-11.5, -4)
 shape = SubResource("RectangleShape2D_344ge")
 
 [node name="UI" type="Node2D" parent="."]

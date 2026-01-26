@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player = null
+@onready var camera = $Camera2D
 @onready var score_label = $UI/Score
 @onready var floors_container = $Floors
 
@@ -8,7 +9,6 @@ extends Node2D
 @export var room1: PackedScene
 
 var level = 1
-var current_floor = 1
 
 var money = 0
 
@@ -30,8 +30,20 @@ func _on_player_elevator(value: Variant) -> void:
 	player.freeze_movement(value)
 	
 func _on_elevator_move(amount: Variant) -> void:
+	Global.active_elevator = null
 	Global.current_floor += amount
 	move_player()
+	var next_floor = get_floor(Global.current_floor-1)
+	if next_floor: player.reparent(next_floor)
+	await get_tree().create_timer(0.1).timeout
+	var next_elevator = get_elevator()
+	Global.active_elevator = next_elevator
+	Global.active_elevator.activate()
+	Global.active_elevator.player = player
+	
+	if Global.active_elevator == null:
+		print("Error: couldn't find elevator on floor: " + str(Global.current_floor-1))
+		return
 
 func _on_desk_reward(amount: Variant) -> void:
 	money += amount
@@ -54,9 +66,16 @@ func get_all_floors():
 	
 func get_floor(number):
 	var all_floors = get_all_floors()
-	if floors_container.get_child_count() >= number:
+	if floors_container.get_child_count() > number:
 		if floors_container.get_child(number).get_child_count() > 0:
 			return floors_container.get_child(number).get_child(0)
+			
+func get_elevator():
+	var current_floor = get_floor(Global.current_floor-1)
+	if current_floor:
+		return current_floor.find_child("Elevator", true, false)
+	else: 
+		return null
 
 func create_player():
 	var all_floors = get_all_floors()
@@ -71,7 +90,7 @@ func create_player():
 	
 	player.reparent(main_room)
 
-func create_level(amount=10, office_location=0):
+func create_level(office_location=1):
 	var office = main_office.instantiate()
 	floors_container.get_child(office_location).add_child(office)
 	for i in range(floors_container.get_child_count()):
@@ -82,4 +101,5 @@ func create_level(amount=10, office_location=0):
 func move_player():
 	player = get_player()
 	print(Global.current_floor)
-	player.global_position = Vector2(player.global_position.x, Global.get_floor_y())
+	player.global_position = Vector2(player.global_position.x, Global.get_floor_y()-6)
+	camera.global_position = Vector2(240, 135-((Global.current_floor-1)*270))

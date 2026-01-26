@@ -44,4 +44,6 @@ func update_texture():
 		front_tray.texture = texture_paper_1
 	else:
 		front_tray.texture = null
-		
+	
+	
+	

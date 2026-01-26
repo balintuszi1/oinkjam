@@ -12,6 +12,7 @@ var work_progress = 0
 @export var papers = 10
 @export var work_speed = 25
 @export var loss_speed = 2.5
+@export var money_amount = 10
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and working_player and !is_at_desk:
@@ -76,7 +77,7 @@ func complete_work():
 	progress_label.text = "Hold SPACE to work"
 	if requires_paper: papers -= 1
 	work_progress = 0
-	Global.add_money.emit(1)
+	Global.add_money.emit(money_amount)
 	
 func leave_desk(player:Node2D, direction = null):
 	if player.is_in_group("player"):

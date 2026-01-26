@@ -41,7 +41,7 @@ shape = SubResource("RectangleShape2D_6bp64")
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/StaticBody2D/Floor"]
 modulate = Color(0, 1, 0.941176, 1)
-position = Vector2(-0.499995, 0.499997)
+position = Vector2(0, -1)
 scale = Vector2(3.83594, 0.164062)
 texture = ExtResource("1_l452t")
 
@@ -49,7 +49,7 @@ texture = ExtResource("1_l452t")
 position = Vector2(-240, -270)
 
 [node name="Elevator" parent="Stations" instance=ExtResource("8_m65rv")]
-position = Vector2(290, 228)
+position = Vector2(290, 225)
 
 [node name="Printer" type="Sprite2D" parent="Stations"]
 position = Vector2(48, 238)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtqkhrtew068i"]
+[gd_scene load_steps=16 format=4 uid="uid://dtqkhrtew068i"]
 
-[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_eqlnk"]
 [ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_od5wd"]
+[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_0k1p6"]
 [ext_resource type="PackedScene" uid="uid://dahfbw3y7rtn1" path="res://Nodes/desk.tscn" id="2_o84nh"]
 [ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="3_2vylc"]
 [ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_4luf0"]
@@ -11,16 +11,23 @@
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_o84nh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
-size = Vector2(480, 20)
+size = Vector2(480, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
-size = Vector2(20, 283)
+size = Vector2(16, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
-size = Vector2(23, 283)
+size = Vector2(16, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
-size = Vector2(494, 22)
+size = Vector2(480, 15)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0sfbk"]
+texture = ExtResource("2_0k1p6")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vkynm"]
+sources/0 = SubResource("TileSetAtlasSource_0sfbk")
 
 [node name="Office" type="Node2D"]
 metadata/office = true
@@ -35,26 +42,25 @@ position = Vector2(-240, -270)
 [node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
 
 [node name="Ceiling" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(240, 0)
+position = Vector2(240, 6)
 shape = SubResource("RectangleShape2D_jjvhh")
 
 [node name="WallLeft" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(10, 133)
+position = Vector2(8, 134)
 shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="WallRight" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(468.5, 131.5)
+position = Vector2(472, 134)
 shape = SubResource("RectangleShape2D_21xkr")
 
 [node name="Floor" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(237, 264)
+position = Vector2(240, 261.5)
 shape = SubResource("RectangleShape2D_6bp64")
 
-[node name="Sprite2D" type="Sprite2D" parent="Environment/StaticBody2D/Floor"]
-modulate = Color(0, 1, 0.941176, 1)
-position = Vector2(-0.499995, 0.499997)
-scale = Vector2(3.83594, 0.164062)
-texture = ExtResource("1_eqlnk")
+[node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
+position = Vector2(240, 270)
+tile_map_data = PackedByteArray("AADx//7/AAAAAAAAAADx//3/AAAAAAAAAADx//z/AAAAAAAAAADx//v/AAAAAAAAAADx//r/AAAAAAAAAADx//n/AAAAAAAAAADx//j/AAAAAAAAAADx//f/AAAAAAAAAADx//b/AAAAAAAAAADx//X/AAAAAAAAAADx//T/AAAAAAAAAADx//P/AAAAAAAAAADx//L/AAAAAAAAAADx//H/AAAAAAAAAADx//D/AAAAAAAAAADx/+//AAAAAAAAAADy/+//AAAAAAAAAADz/+//AAAAAAAAAAD0/+//AAAAAAAAAAD1/+//AAAAAAAAAAD2/+//AAAAAAAAAAD3/+//AAAAAAAAAAD4/+//AAAAAAAAAAD5/+//AAAAAAAAAAD6/+//AAAAAAAAAAD7/+//AAAAAAAAAAD8/+//AAAAAAAAAAD9/+//AAAAAAAAAAD+/+//AAAAAAAAAAD//+//AAAAAAAAAAAAAO//AAAAAAAAAAABAO//AAAAAAAAAAACAO//AAAAAAAAAAADAO//AAAAAAAAAAAEAO//AAAAAAAAAAAFAO//AAAAAAAAAAAGAO//AAAAAAAAAAAHAO//AAAAAAAAAAAIAO//AAAAAAAAAAAJAO//AAAAAAAAAAAKAO//AAAAAAAAAAALAO//AAAAAAAAAAAMAO//AAAAAAAAAAANAO//AAAAAAAAAAAOAO//AAAAAAAAAAAOAPD/AAAAAAAAAAAOAPH/AAAAAAAAAAAOAPL/AAAAAAAAAAAOAPP/AAAAAAAAAAAOAPT/AAAAAAAAAAAOAPX/AAAAAAAAAAAOAPb/AAAAAAAAAAAOAPf/AAAAAAAAAAAOAPj/AAAAAAAAAAAOAPn/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAADx////AAAAAAAAAADy////AAAAAAAAAADz////AAAAAAAAAAD0////AAAAAAAAAAD1////AAAAAAAAAAD2////AAAAAAAAAAD3////AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_vkynm")
 
 [node name="Stations" type="Node2D" parent="."]
 position = Vector2(-240, -270)
@@ -72,4 +78,4 @@ texture_paper_3 = ExtResource("6_rs1ao")
 texture_paper_loaded = ExtResource("7_o2cca")
 
 [node name="Elevator" parent="Stations" instance=ExtResource("8_o84nh")]
-position = Vector2(290, 228)
+position = Vector2(290, 225)

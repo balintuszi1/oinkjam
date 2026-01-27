@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://2ga7mnpgn7xi"]
+[gd_scene load_steps=11 format=3 uid="uid://2ga7mnpgn7xi"]
 
 [ext_resource type="PackedScene" uid="uid://o0ik5522xass" path="res://Nodes/player.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://ytqt6bnn05yw" path="res://Scripts/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://dtqkhrtew068i" path="res://Nodes/office.tscn" id="3_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://osdeoac1tsg0" path="res://Nodes/generic_room.tscn" id="5_21xkr"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://b2pdnre4bw3as" path="res://Nodes/pause_menu.tscn" id="6_21xkr"]
 
 [sub_resource type="Gradient" id="Gradient_kry3j"]
 offsets = PackedFloat32Array(0, 0.78169, 1)
@@ -33,7 +34,7 @@ position = Vector2(104, 230)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="TimeBar" type="TextureProgressBar" parent="UI"]
+[node name="Time" type="TextureProgressBar" parent="UI"]
 anchors_preset = -1
 anchor_right = 0.05
 anchor_bottom = 0.237037
@@ -41,7 +42,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 4.0
 offset_bottom = 4.0
-value = 50.0
+max_value = 60.0
 fill_mode = 3
 texture_under = SubResource("GradientTexture2D_21xkr")
 texture_progress = SubResource("GradientTexture2D_344ge")
@@ -112,3 +113,10 @@ position = Vector2(240, -2700)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(240, 135)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_21xkr")]
+visible = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

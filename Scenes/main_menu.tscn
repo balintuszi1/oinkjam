@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnn2u35bma55p"]
+
+[ext_resource type="Texture2D" uid="uid://dwnp0aap2qdsc" path="res://Sprites/pig_icon.png" id="1_28flt"]
+[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="1_48xlc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.847059, 0.937255, 0.941176, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -15.5
+offset_right = 20.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_48xlc")
+text = "Play"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 42.0
+offset_right = 27.5
+offset_bottom = 109.0
+grow_horizontal = 2
+texture = ExtResource("1_28flt")

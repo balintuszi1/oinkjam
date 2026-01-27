@@ -1,20 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://osdeoac1tsg0"]
+[gd_scene load_steps=10 format=4 uid="uid://osdeoac1tsg0"]
 
-[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_l452t"]
+[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_m4dcq"]
 [ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="3_geovy"]
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_m65rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
-size = Vector2(480, 20)
+size = Vector2(480, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
-size = Vector2(20, 283)
+size = Vector2(16, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
-size = Vector2(23, 283)
+size = Vector2(16, 272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
-size = Vector2(494, 22)
+size = Vector2(480, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krrsp"]
+texture = ExtResource("2_m4dcq")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_76n6x"]
+sources/0 = SubResource("TileSetAtlasSource_krrsp")
 
 [node name="Room" type="Node2D"]
 
@@ -24,26 +31,25 @@ position = Vector2(-240, -270)
 [node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
 
 [node name="Ceiling" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(240, 0)
+position = Vector2(240, 4)
 shape = SubResource("RectangleShape2D_jjvhh")
 
 [node name="WallLeft" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(10, 133)
+position = Vector2(8, 134)
 shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="WallRight" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(468.5, 131.5)
+position = Vector2(472, 134)
 shape = SubResource("RectangleShape2D_21xkr")
 
 [node name="Floor" type="CollisionShape2D" parent="Environment/StaticBody2D"]
-position = Vector2(237, 264)
+position = Vector2(240, 262)
 shape = SubResource("RectangleShape2D_6bp64")
 
-[node name="Sprite2D" type="Sprite2D" parent="Environment/StaticBody2D/Floor"]
-modulate = Color(0, 1, 0.941176, 1)
-position = Vector2(0, -1)
-scale = Vector2(3.83594, 0.164062)
-texture = ExtResource("1_l452t")
+[node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
+position = Vector2(240, 270)
+tile_map_data = PackedByteArray("AADx//7/AAAAAAAAAADx//3/AAAAAAAAAADx//z/AAAAAAAAAADx//v/AAAAAAAAAADx//r/AAAAAAAAAADx//n/AAAAAAAAAADx//j/AAAAAAAAAADx//f/AAAAAAAAAADx//b/AAAAAAAAAADx//X/AAAAAAAAAADx//T/AAAAAAAAAADx//P/AAAAAAAAAADx//L/AAAAAAAAAADx//H/AAAAAAAAAADx//D/AAAAAAAAAADx/+//AAAAAAAAAADy/+//AAAAAAAAAADz/+//AAAAAAAAAAD0/+//AAAAAAAAAAD1/+//AAAAAAAAAAD2/+//AAAAAAAAAAD3/+//AAAAAAAAAAD4/+//AAAAAAAAAAD5/+//AAAAAAAAAAD6/+//AAAAAAAAAAD7/+//AAAAAAAAAAD8/+//AAAAAAAAAAD9/+//AAAAAAAAAAD+/+//AAAAAAAAAAD//+//AAAAAAAAAAAAAO//AAAAAAAAAAABAO//AAAAAAAAAAACAO//AAAAAAAAAAADAO//AAAAAAAAAAAEAO//AAAAAAAAAAAFAO//AAAAAAAAAAAGAO//AAAAAAAAAAAHAO//AAAAAAAAAAAIAO//AAAAAAAAAAAJAO//AAAAAAAAAAAKAO//AAAAAAAAAAALAO//AAAAAAAAAAAMAO//AAAAAAAAAAANAO//AAAAAAAAAAAOAO//AAAAAAAAAAAOAPD/AAAAAAAAAAAOAPH/AAAAAAAAAAAOAPL/AAAAAAAAAAAOAPP/AAAAAAAAAAAOAPT/AAAAAAAAAAAOAPX/AAAAAAAAAAAOAPb/AAAAAAAAAAAOAPf/AAAAAAAAAAAOAPj/AAAAAAAAAAAOAPn/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAADx////AAAAAAAAAADy////AAAAAAAAAADz////AAAAAAAAAAD0////AAAAAAAAAAD1////AAAAAAAAAAD2////AAAAAAAAAAD3////AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAADy//D/AAAAAAAAAADz//D/AAAAAAAAAAD0//D/AAAAAAAAAAD1//D/AAAAAAAAAAD2//D/AAAAAAAAAAD3//D/AAAAAAAAAAD4//D/AAAAAAAAAAD5//D/AAAAAAAAAAD6//D/AAAAAAAAAAD7//D/AAAAAAAAAAD8//D/AAAAAAAAAAD9//D/AAAAAAAAAAD+//D/AAAAAAAAAAD///D/AAAAAAAAAAAAAPD/AAAAAAAAAAABAPD/AAAAAAAAAAACAPD/AAAAAAAAAAADAPD/AAAAAAAAAAAEAPD/AAAAAAAAAAAFAPD/AAAAAAAAAAAGAPD/AAAAAAAAAAAHAPD/AAAAAAAAAAAIAPD/AAAAAAAAAAAJAPD/AAAAAAAAAAAKAPD/AAAAAAAAAAALAPD/AAAAAAAAAAAMAPD/AAAAAAAAAAANAPD/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_76n6x")
 
 [node name="Stations" type="Node2D" parent="."]
 position = Vector2(-240, -270)

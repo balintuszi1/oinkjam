@@ -1,6 +1,35 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://mquj80rurj05"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://mquj80rurj05"]
 
 [ext_resource type="FontFile" uid="uid://crg8aortx06kg" path="res://Other assets/edit-undo.brk.ttf" id="1_e1x85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 0.788235)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1x85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj6dk"]
+bg_color = Color(0.427325, 0.646696, 0.64559, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_110ce"]
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05tig"]
+bg_color = Color(0.243568, 0.408142, 0.40762, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udxb7"]
 bg_color = Color(0.6, 0.6, 0.6, 0.478431)
@@ -19,6 +48,13 @@ corner_radius_bottom_left = 4
 anti_aliasing = false
 
 [resource]
+Button/font_sizes/font_size = 14
+Button/fonts/font = ExtResource("1_e1x85")
+Button/styles/disabled = SubResource("StyleBoxFlat_e1x85")
+Button/styles/focus = SubResource("StyleBoxEmpty_e1x85")
+Button/styles/hover = SubResource("StyleBoxFlat_vj6dk")
+Button/styles/normal = SubResource("StyleBoxFlat_110ce")
+Button/styles/pressed = SubResource("StyleBoxFlat_05tig")
 Label/font_sizes/font_size = 14
 Label/fonts/font = ExtResource("1_e1x85")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_udxb7")

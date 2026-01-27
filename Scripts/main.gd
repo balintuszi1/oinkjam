@@ -4,13 +4,15 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var score_label = $UI/Score
 @onready var floors_container = $Floors
+@onready var time_progress_bar = $UI/Time
+@onready var timer = $Timer
 
 @export var main_office: PackedScene
 @export var room1: PackedScene
 
 var level = 1
-
 var money = 0
+var time_left = 60
 
 func _ready() -> void:
 	player = get_player()
@@ -22,6 +24,8 @@ func _ready() -> void:
 	
 	create_level()
 	create_player()
+	
+	start_timer()
 
 func _on_desk_is_player_working(work: Variant) -> void:
 	player.freeze_movement(work)
@@ -47,6 +51,7 @@ func _on_elevator_move(amount: Variant) -> void:
 
 func _on_desk_reward(amount: Variant) -> void:
 	money += amount
+	add_time(4)
 	score_label.text = "Money: " + str(money)
 
 func load_floor(level, floor):
@@ -103,3 +108,19 @@ func move_player():
 	print(Global.current_floor)
 	player.global_position = Vector2(player.global_position.x, Global.get_floor_y()-6)
 	camera.global_position = Vector2(240, 135-((Global.current_floor-1)*270))
+	
+func start_timer():
+	time_progress_bar.value = Global.max_timer
+	time_left = Global.max_timer
+	timer.start()
+
+func add_time(amount):
+	time_left += amount
+	time_progress_bar.value = time_left
+
+func _on_timer_timeout() -> void:
+	if time_left > 0:
+		time_left -= 1
+		time_progress_bar.value = time_left
+	else:
+		timer.stop()

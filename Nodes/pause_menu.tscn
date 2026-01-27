@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2pdnre4bw3as"]
+
+[ext_resource type="Script" uid="uid://ct4dg3um7ganx" path="res://Scripts/pause.gd" id="1_q3qqx"]
+[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="1_vjagi"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_q3qqx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 119.0
+grow_vertical = 2
+color = Color(0.85098, 1, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 6.0
+offset_right = 80.0
+offset_bottom = 29.0
+theme = ExtResource("1_vjagi")
+theme_override_colors/font_color = Color(0.197937, 0.197937, 0.197937, 1)
+text = "Paused"
+
+[node name="CloseButton" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = 112.0
+offset_right = 76.0
+offset_bottom = 126.0
+grow_vertical = 2
+theme = ExtResource("1_vjagi")
+text = "Close"
+
+[node name="OptionsButton" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -110.0
+offset_right = 81.0
+offset_bottom = -96.0
+grow_vertical = 2
+theme = ExtResource("1_vjagi")
+text = "Options
+"
+
+[node name="OptionsButton2" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -87.0
+offset_right = 81.0
+offset_bottom = -73.0
+grow_vertical = 2
+theme = ExtResource("1_vjagi")
+text = "Exit"

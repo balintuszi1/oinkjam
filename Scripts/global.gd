@@ -4,8 +4,8 @@ extends Node
 #Desk
 signal is_player_working(work)
 signal add_money(amount)
-#Printer
-signal give_documents(amount)
+#Printer and cabinets
+signal give_item(item, amount)
 #Elevator
 signal is_player_in_elevator(value)
 signal move_floors(amount)
@@ -13,6 +13,8 @@ signal move_floors(amount)
 ### VARIABLES ###
 var player = null
 var active_elevator = null
+var current_object = null
+var touching_objects = []
 
 const MAX_FLOORS = 12
 

@@ -7,6 +7,14 @@
 process_mode = 3
 script = ExtResource("1_q3qqx")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.556863)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -59,3 +67,5 @@ offset_bottom = -73.0
 grow_vertical = 2
 theme = ExtResource("1_vjagi")
 text = "Exit"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

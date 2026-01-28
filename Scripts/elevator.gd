@@ -6,7 +6,7 @@ extends Area2D
 
 var player = null
 static var is_in_elevator = false
-static var offset_y = 228-Global.ground_height
+static var offset_y = 0 #222-Global.ground_height #substarct elevator height from the ground height
 static var offset_x = 0
 
 func _process(delta: float) -> void:

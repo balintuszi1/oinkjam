@@ -10,3 +10,7 @@ func toggle_pause():
 	is_paused = !is_paused
 	get_tree().paused = is_paused
 	self.visible = is_paused
+
+
+func _on_close_button_pressed() -> void:
+	toggle_pause()

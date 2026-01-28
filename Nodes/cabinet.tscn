@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ivmlykvf3aa"]
+
+[ext_resource type="Script" uid="uid://cjqr2nkkl16qr" path="res://Scripts/cabinet.gd" id="1_1xlb5"]
+[ext_resource type="Texture2D" uid="uid://dovpkaaosmokb" path="res://Sprites/cabinet.png" id="1_d2vu6"]
+[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="3_2qnvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_od5wd"]
+size = Vector2(32, 33)
+
+[node name="Cabinet" type="Area2D"]
+script = ExtResource("1_1xlb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -0.5)
+texture = ExtResource("1_d2vu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_od5wd")
+
+[node name="UI" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -43.0
+offset_right = 18.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_2qnvo")
+text = "I give you items"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

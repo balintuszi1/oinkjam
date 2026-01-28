@@ -8,6 +8,7 @@ var inventory = {
 	"right_hand": {"item": "none", "amount": 0}
 }
 var hand_capacity = {
+	"empty_paper": 5,
 	"paper": 5,
 	"black_ink": 1,
 	"blue_ink": 1,

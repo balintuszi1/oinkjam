@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://osdeoac1tsg0"]
+[gd_scene load_steps=11 format=4 uid="uid://osdeoac1tsg0"]
 
+[ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_m4dcq"]
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_m4dcq"]
 [ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="3_geovy"]
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_m65rv"]
@@ -24,6 +25,10 @@ texture = ExtResource("2_m4dcq")
 sources/0 = SubResource("TileSetAtlasSource_krrsp")
 
 [node name="Room" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, -135)
+texture = ExtResource("1_m4dcq")
 
 [node name="Environment" type="Node2D" parent="."]
 position = Vector2(-240, -270)
@@ -55,7 +60,7 @@ tile_set = SubResource("TileSet_76n6x")
 position = Vector2(-240, -270)
 
 [node name="Elevator" parent="Stations" instance=ExtResource("8_m65rv")]
-position = Vector2(290, 225)
+position = Vector2(290, 222)
 
 [node name="Printer" type="Sprite2D" parent="Stations"]
 position = Vector2(48, 238)

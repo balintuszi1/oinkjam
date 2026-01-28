@@ -16,7 +16,7 @@ var time_left = 60
 
 func _ready() -> void:
 	player = get_player()
-	Global.give_documents.connect(_on_printer_give_paper)
+	Global.give_item.connect(_on_give_item)
 	Global.is_player_working.connect(_on_desk_is_player_working)
 	Global.add_money.connect(_on_desk_reward)
 	Global.is_player_in_elevator.connect(_on_player_elevator)
@@ -24,8 +24,12 @@ func _ready() -> void:
 	
 	create_level()
 	create_player()
+	player.global_position.y = Global.get_floor_y()
 	
 	start_timer()
+
+func _process(delta: float) -> void:
+	refresh_objects()
 
 func _on_desk_is_player_working(work: Variant) -> void:
 	player.freeze_movement(work)
@@ -57,7 +61,7 @@ func _on_desk_reward(amount: Variant) -> void:
 func load_floor(level, floor):
 	pass
 
-func _on_printer_give_paper(amount: Variant) -> void:
+func _on_give_item(item: Variant, amount: Variant) -> void:
 	player.pickup_item("paper")
 
 func get_player():
@@ -124,3 +128,20 @@ func _on_timer_timeout() -> void:
 		time_progress_bar.value = time_left
 	else:
 		timer.stop()
+		
+func refresh_objects():
+	if player and len(Global.touching_objects) > 0:
+		var closest_object = null
+		var smallest_distance = 99999999
+		
+		for object in Global.touching_objects:
+			var distance = player.global_position.distance_to(object.global_position)
+			if distance < smallest_distance:
+				smallest_distance = distance
+				closest_object = object
+				
+		if Global.current_object != closest_object:
+			if Global.current_object != null: Global.current_object.ui.hide()
+			Global.current_object = closest_object
+			if Global.current_object != null:
+				Global.current_object.ui.show()

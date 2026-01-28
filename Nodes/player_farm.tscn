@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctf6btxsfrny5"]
+
+[ext_resource type="Script" uid="uid://dkepv1efo4q1j" path="res://Scripts/player.gd" id="1_nq25b"]
+[ext_resource type="Texture2D" uid="uid://coa3pl5p4xhp7" path="res://Sprites/pig_on_farm1.png" id="2_nq25b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlfej"]
+size = Vector2(36, 20)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_nq25b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
+texture = ExtResource("2_nq25b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+shape = SubResource("RectangleShape2D_qlfej")

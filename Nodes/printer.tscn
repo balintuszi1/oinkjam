@@ -26,9 +26,9 @@ position = Vector2(-11.5, -4)
 shape = SubResource("RectangleShape2D_344ge")
 
 [node name="UI" type="Node2D" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="UI"]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

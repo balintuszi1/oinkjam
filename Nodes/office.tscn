@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://dtqkhrtew068i"]
+[gd_scene load_steps=84 format=4 uid="uid://dtqkhrtew068i"]
 
 [ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_od5wd"]
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_0k1p6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bbtpp6adtv34a" path="res://Sprites/Clock.png" id="3_0sfbk"]
 [ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="3_2vylc"]
 [ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_4luf0"]
+[ext_resource type="Texture2D" uid="uid://dsratksoi5ae7" path="res://Sprites/water_dispenser.png" id="4_vkynm"]
 [ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://Sprites/printer_paper2.png" id="5_q644x"]
 [ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://Sprites/printer_paper3.png" id="6_rs1ao"]
 [ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="7_o2cca"]
@@ -521,8 +522,13 @@ tile_map_data = PackedByteArray("AADx//7/AAAAAAAAAADx//3/AAAAAAAAAADx//z/AAAAAAA
 tile_set = SubResource("TileSet_vkynm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment"]
-position = Vector2(193, 164)
+position = Vector2(198, 162)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g1egu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment"]
+position = Vector2(343, 238)
+texture = ExtResource("4_vkynm")
 
 [node name="Stations" type="Node2D" parent="."]
 position = Vector2(-240, -270)

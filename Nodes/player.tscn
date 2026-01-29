@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://o0ik5522xass"]
 
 [ext_resource type="Script" uid="uid://dkepv1efo4q1j" path="res://Scripts/player.gd" id="1_qlfej"]
-[ext_resource type="Texture2D" uid="uid://baxgv5e5e77ox" path="res://Sprites/pigSprite.png" id="2_qlfej"]
+[ext_resource type="Texture2D" uid="uid://drre3w32nufdv" path="res://Sprites/pigSprite2.png" id="2_qlfej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlfej"]
 size = Vector2(17, 40)

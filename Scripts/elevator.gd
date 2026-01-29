@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 func on_elevator_enter():
 	Global.active_elevator = self
 	Global.is_player_in_elevator.emit(true)
-	ui.show()
+	show_arrows()
 	is_in_elevator = true
 	
 func on_elevator_leave(direction=null):
@@ -52,7 +52,18 @@ func inactivate():
 	
 func activate():
 	Global.active_elevator = self
+	show_arrows()
+
+func show_arrows():
 	ui.show()
+	if Global.current_floor >= Global.MAX_FLOORS: 
+		up_arrow.hide()
+	else:
+		up_arrow.show()
+	if Global.current_floor <= 1: 
+		down_arrow.hide()
+	else:
+		down_arrow.show()
 
 func leave(player:Node2D, direction = null):
 	var pos_x = self.global_position.x

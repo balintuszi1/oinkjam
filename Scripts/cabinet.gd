@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var ui = $UI
+@onready var label = $UI/Label
 
 @export var items_count = -1
 @export var item = "none"
@@ -33,7 +34,7 @@ func _on_body_exited(body: Node2D) -> void:
 	#return
 	
 func _ready() -> void:
-	pass
+	set_text()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and Global.current_object == self:
@@ -45,5 +46,7 @@ func give_item():
 		if items_count >= amount:
 			items_count -= amount
 		if items_count == 0:
-			ui.text = "Empty!"
+			label.text = "Empty!"
 	
+func set_text():
+	label.text = "Get " + str(item)

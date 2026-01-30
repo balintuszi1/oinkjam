@@ -57,5 +57,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_110ce")
 Button/styles/pressed = SubResource("StyleBoxFlat_05tig")
 Label/font_sizes/font_size = 14
 Label/fonts/font = ExtResource("1_e1x85")
+ProgressBar/font_sizes/font_size = 14
+ProgressBar/fonts/font = ExtResource("1_e1x85")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_udxb7")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_bo547")

@@ -65,12 +65,12 @@ func show_arrows():
 	else:
 		down_arrow.show()
 
-func leave(player:Node2D, direction = null):
+func leave(body:Node2D, direction = null):
 	var pos_x = self.global_position.x
-	if player.is_in_group("player"):
+	if body.is_in_group("player"):
 		if direction == "right": pos_x = self.global_position.x+offset_x
 		elif direction == "left": pos_x = self.global_position.x-offset_x
 		else: pos_x = self.global_position.x
-		player.global_position = Vector2(pos_x, Global.get_floor_y()-offset_y)
+		body.global_position = Vector2(pos_x, Global.get_floor_y()-offset_y)
 		ui.hide()
 		is_in_elevator = false

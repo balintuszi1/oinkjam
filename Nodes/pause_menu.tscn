@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2pdnre4bw3as"]
+[gd_scene load_steps=3 format=3 uid="uid://b3vv1487ecanp"]
 
 [ext_resource type="Script" uid="uid://ct4dg3um7ganx" path="res://Scripts/pause.gd" id="1_q3qqx"]
-[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="1_vjagi"]
+[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="2_g8hx7"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -27,7 +27,7 @@ offset_left = 38.0
 offset_top = 6.0
 offset_right = 80.0
 offset_bottom = 29.0
-theme = ExtResource("1_vjagi")
+theme = ExtResource("2_g8hx7")
 theme_override_colors/font_color = Color(0.197937, 0.197937, 0.197937, 1)
 text = "Paused"
 
@@ -40,7 +40,7 @@ offset_top = 112.0
 offset_right = 76.0
 offset_bottom = 126.0
 grow_vertical = 2
-theme = ExtResource("1_vjagi")
+theme = ExtResource("2_g8hx7")
 text = "Close"
 
 [node name="OptionsButton" type="Button" parent="."]
@@ -52,7 +52,7 @@ offset_top = -110.0
 offset_right = 81.0
 offset_bottom = -96.0
 grow_vertical = 2
-theme = ExtResource("1_vjagi")
+theme = ExtResource("2_g8hx7")
 text = "Options
 "
 
@@ -65,7 +65,7 @@ offset_top = -87.0
 offset_right = 81.0
 offset_bottom = -73.0
 grow_vertical = 2
-theme = ExtResource("1_vjagi")
+theme = ExtResource("2_g8hx7")
 text = "Exit"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

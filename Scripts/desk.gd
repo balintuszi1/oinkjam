@@ -35,7 +35,7 @@ func _on_body_entered(body: Node2D) -> void:
 			papers += working_player.has_item("paper")
 			working_player.use_item("paper", working_player.has_item("paper"))
 		if work_progress <= 0: progress_bar.hide()
-		print("Player is at the station")
+		#print("Player is at the station")
 
 func _on_body_exited(body: Node2D) -> void:
 	working_player = null
@@ -93,7 +93,7 @@ func leave_desk(player:Node2D, direction = null):
 		progress_UI.show()
 		Global.is_player_working.emit(false)
 		if work_progress <= 0: progress_bar.hide()
-		print("Player is at the station")
+		#print("Player is at the station")
 
 func update_progress(value):
 	progress_bar.value = value
@@ -105,6 +105,3 @@ func has_paper():
 		return true
 	else:
 		return false
-	
-
-	

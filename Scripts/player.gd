@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
+@onready var sprite = $Sprite2D
+
 @export var speed = 100
+@export var acceleration = 600
+@export var friction = 600
 
 var can_move = true
 var inventory = {
@@ -26,13 +30,17 @@ func _ready() -> void:
 func _physics_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if can_move:
-		velocity.x = direction * speed
-		move_and_slide()
-	
-		if direction > 0:
-			$Sprite2D.flip_h = false
-		elif direction < 0:
-			$Sprite2D.flip_h = true
+		if direction != 0:
+			velocity.x = move_toward(velocity.x, direction * speed, acceleration * delta)
+			if direction > 0:
+				sprite.flip_h = false
+			elif direction < 0:
+				sprite.flip_h = true
+		else:
+			velocity.x = move_toward(velocity.x, 0, friction * delta)
+	else:
+		velocity.x = 0
+	move_and_slide()
 		
 func freeze_movement(state):
 	if state == true:
@@ -65,4 +73,4 @@ func has_item(item):
 		return inventory["right_hand"]["amount"]
 	elif inventory["left_hand"]["item"] == item:
 		return inventory["left_hand"]["amount"]
-	return false
+	return 0

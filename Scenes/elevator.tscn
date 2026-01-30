@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dyu5t76mn2c3u" path="res://Scripts/elevator.gd" id="1_7i85y"]
 [ext_resource type="Texture2D" uid="uid://ttawtd6uqwxf" path="res://Sprites/elevator_sketch1.png" id="2_jd6vs"]
+[ext_resource type="Texture2D" uid="uid://dmdfffjmhmabc" path="res://Sprites/up_arrow.png" id="3_1gjip"]
 [ext_resource type="Texture2D" uid="uid://olgxvqe5w2gc" path="res://Sprites/down_arrow.png" id="3_jd6vs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i85y"]
 size = Vector2(46, 64)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7i85y"]
-load_path = "res://.godot/imported/up_arrow.png-a3423e26eda521d8666a2e4e1009e6ce.ctex"
 
 [node name="Elevator" type="Area2D"]
 script = ExtResource("1_7i85y")
@@ -20,10 +18,10 @@ texture = ExtResource("2_jd6vs")
 shape = SubResource("RectangleShape2D_7i85y")
 
 [node name="UI" type="Node2D" parent="."]
-visible = false
 z_index = 1
 
 [node name="Up" type="TextureRect" parent="UI"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -35,9 +33,10 @@ offset_right = 16.0
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = SubResource("CompressedTexture2D_7i85y")
+texture = ExtResource("3_1gjip")
 
 [node name="Down" type="TextureRect" parent="UI"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

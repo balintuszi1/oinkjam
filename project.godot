@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OinkJam"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="uid://cnn2u35bma55p"
 config/features=PackedStringArray("26.1", "Forward Plus", "Redot")
 config/icon="res://icon.svg"
 

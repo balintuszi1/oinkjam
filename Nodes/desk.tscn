@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dahfbw3y7rtn1"]
+[gd_scene load_steps=7 format=3 uid="uid://dahfbw3y7rtn1"]
 
 [ext_resource type="Script" uid="uid://cj7vpqb33hp0n" path="res://Scripts/desk.gd" id="1_mu7sr"]
-[ext_resource type="Texture2D" uid="uid://c8ykr65j1dlay" path="res://Sprites/desk.png" id="2_bo547"]
+[ext_resource type="Texture2D" uid="uid://baf0gvi4d7nef" path="res://Sprites/desk2.png" id="2_bo547"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="3_bo547"]
 [ext_resource type="FontFile" uid="uid://crg8aortx06kg" path="res://Other assets/edit-undo.brk.ttf" id="3_udxb7"]
+[ext_resource type="Texture2D" uid="uid://c3r3b0hjpnyga" path="res://Sprites/chair_top.png" id="5_jvgcj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(52, 48)
@@ -12,7 +13,7 @@ size = Vector2(52, 48)
 script = ExtResource("1_mu7sr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["desk"]]
-position = Vector2(-15, -1)
+position = Vector2(-7, 4)
 texture = ExtResource("2_bo547")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["desk"]]
@@ -53,6 +54,11 @@ theme_override_fonts/font = ExtResource("3_udxb7")
 theme_override_font_sizes/font_size = 14
 text = "Hold SPACE to work"
 horizontal_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1, -13)
+texture = ExtResource("5_jvgcj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

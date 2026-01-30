@@ -4,10 +4,11 @@ extends Area2D
 @onready var up_arrow = $UI/Up
 @onready var down_arrow = $UI/Down
 
+@export var offset_y = 0 #222-Global.ground_height #substarct elevator height from the ground height
+@export var offset_x = 0
+
 var player = null
-static var is_in_elevator = false
-static var offset_y = 0 #222-Global.ground_height #substarct elevator height from the ground height
-static var offset_x = 0
+var is_in_elevator = false
 
 func _process(delta: float) -> void:
 	if player:

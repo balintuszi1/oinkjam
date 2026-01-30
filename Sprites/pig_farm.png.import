@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coa3pl5p4xhp7"
-path="res://.godot/imported/pig_on_farm1.png-5fd63dae447e63dae773b0fb7a2c1912.ctex"
+uid="uid://dvwsx5qdurknt"
+path="res://.godot/imported/pig_farm.png-f0e7243b704f02a541951340d3814ea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/pig_on_farm1.png"
-dest_files=["res://.godot/imported/pig_on_farm1.png-5fd63dae447e63dae773b0fb7a2c1912.ctex"]
+source_file="res://Sprites/pig_farm.png"
+dest_files=["res://.godot/imported/pig_farm.png-f0e7243b704f02a541951340d3814ea6.ctex"]
 
 [params]
 

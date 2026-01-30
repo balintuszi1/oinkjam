@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0pgwubig5k84"
-path="res://.godot/imported/water_dispenser.png-caf7257e6f363e7e9eb96b2bb81e1673.ctex"
+uid="uid://dlicns3im0f7q"
+path="res://.godot/imported/flower_pot.png-b124e0c35a6968cde3c2fc100febcef8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/water_dispenser.png"
-dest_files=["res://.godot/imported/water_dispenser.png-caf7257e6f363e7e9eb96b2bb81e1673.ctex"]
+source_file="res://Sprites/flower_pot.png"
+dest_files=["res://.godot/imported/flower_pot.png-b124e0c35a6968cde3c2fc100febcef8.ctex"]
 
 [params]
 

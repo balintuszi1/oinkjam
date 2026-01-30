@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_3jfvs"]
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_mux32"]
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="3_8x6ag"]
-[ext_resource type="Texture2D" uid="uid://dsratksoi5ae7" path="res://Sprites/water_dispenser.png" id="4_mux32"]
-[ext_resource type="Texture2D" uid="uid://c8ykr65j1dlay" path="res://Sprites/desk.png" id="5_8x6ag"]
+[ext_resource type="Texture2D" uid="uid://d0pgwubig5k84" path="res://Sprites/water_dispenser.png" id="4_mux32"]
+[ext_resource type="Texture2D" uid="uid://baf0gvi4d7nef" path="res://Sprites/desk2.png" id="5_mux32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
 size = Vector2(480, 16)
@@ -65,10 +65,10 @@ position = Vector2(-240, -270)
 position = Vector2(290, 222)
 
 [node name="Water" type="Sprite2D" parent="Stations"]
-position = Vector2(48, 238)
+position = Vector2(48, 230)
 texture = ExtResource("4_mux32")
 flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Stations"]
-position = Vector2(427, 239)
-texture = ExtResource("5_8x6ag")
+position = Vector2(415, 244)
+texture = ExtResource("5_mux32")

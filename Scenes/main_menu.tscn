@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnn2u35bma55p"]
+[gd_scene load_steps=4 format=3 uid="uid://cnn2u35bma55p"]
 
+[ext_resource type="Script" uid="uid://con6qif0f700" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://dwnp0aap2qdsc" path="res://Sprites/pig_icon.png" id="1_28flt"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="1_48xlc"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1ehe0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,3 +49,5 @@ offset_right = 27.5
 offset_bottom = 109.0
 grow_horizontal = 2
 texture = ExtResource("1_28flt")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,5 +1,32 @@
-[gd_scene format=3 uid="uid://c7yssvwyn1lsi"]
+[gd_scene load_steps=6 format=3 uid="uid://c7yssvwyn1lsi"]
+
+[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="1_1bveb"]
+[ext_resource type="PackedScene" uid="uid://ctf6btxsfrny5" path="res://Nodes/player_farm.tscn" id="2_1yvdp"]
+[ext_resource type="PackedScene" uid="uid://bkafkyj6mtwv" path="res://Sprites/mud_pile.tscn" id="3_6s856"]
+[ext_resource type="Script" uid="uid://30rhd1aonq7a" path="res://Scripts/mud_pile.gd" id="4_30eac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s856"]
+size = Vector2(500, 20)
 
 [node name="Farm" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(240, 0)
+shape = SubResource("RectangleShape2D_6s856")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(240, 0)
+scale = Vector2(31, 1)
+texture = ExtResource("1_1bveb")
+
+[node name="Player" parent="." instance=ExtResource("2_1yvdp")]
+position = Vector2(235, 250)
+
+[node name="MudPile" parent="." instance=ExtResource("3_6s856")]
+position = Vector2(440, 255)
+script = ExtResource("4_30eac")
+
+[connection signal="body_entered" from="MudPile" to="MudPile" method="_on_body_entered"]

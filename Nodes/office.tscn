@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bbtpp6adtv34a" path="res://Sprites/Clock.png" id="3_0sfbk"]
 [ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="3_2vylc"]
 [ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_4luf0"]
-[ext_resource type="Texture2D" uid="uid://dsratksoi5ae7" path="res://Sprites/water_dispenser.png" id="4_vkynm"]
+[ext_resource type="Texture2D" uid="uid://d0pgwubig5k84" path="res://Sprites/water_dispenser.png" id="4_vkynm"]
 [ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://Sprites/printer_paper2.png" id="5_q644x"]
 [ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://Sprites/printer_paper3.png" id="6_rs1ao"]
 [ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="7_o2cca"]
@@ -527,8 +527,8 @@ position = Vector2(198, 162)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g1egu")
 
-[node name="Sprite2D" type="Sprite2D" parent="Environment"]
-position = Vector2(343, 238)
+[node name="WaterDispenser" type="Sprite2D" parent="Environment"]
+position = Vector2(343, 230)
 texture = ExtResource("4_vkynm")
 
 [node name="Stations" type="Node2D" parent="."]
@@ -542,6 +542,8 @@ requires_paper = true
 [node name="Printer" parent="Stations" instance=ExtResource("3_2vylc")]
 position = Vector2(405, 237)
 requires_paper = true
+requires_black = true
+requires_color = true
 texture_paper_1 = ExtResource("4_4luf0")
 texture_paper_2 = ExtResource("5_q644x")
 texture_paper_3 = ExtResource("6_rs1ao")
@@ -555,15 +557,15 @@ position = Vector2(33, 238)
 item = "empty_paper"
 
 [node name="Cabinet2" parent="Stations" instance=ExtResource("10_0k1p6")]
-position = Vector2(65, 238)
+position = Vector2(53, 238)
 item = "blue_ink"
 
 [node name="Cabinet3" parent="Stations" instance=ExtResource("10_0k1p6")]
-position = Vector2(97, 238)
+position = Vector2(72, 238)
 item = "magenta_ink"
 
 [node name="Cabinet4" parent="Stations" instance=ExtResource("10_0k1p6")]
-position = Vector2(129, 238)
+position = Vector2(91, 238)
 item = "yellow_ink"
 
 [node name="Cabinet5" parent="Stations" instance=ExtResource("10_0k1p6")]

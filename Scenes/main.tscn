@@ -33,6 +33,7 @@ default_rooms = Array[PackedScene]([ExtResource("5_21xkr"), ExtResource("5_21xkr
 
 [node name="Player" parent="." instance=ExtResource("1_bo1nx")]
 position = Vector2(104, 230)
+speed = 80
 
 [node name="UI" type="CanvasLayer" parent="."]
 

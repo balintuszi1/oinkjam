@@ -11,6 +11,8 @@ signal is_player_in_elevator(value)
 signal move_floors(amount)
 
 ### VARIABLES ###
+var stored_data = {}
+
 var player = null
 var active_elevator = null
 var current_object = null

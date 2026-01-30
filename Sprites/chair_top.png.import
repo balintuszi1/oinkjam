@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0pgwubig5k84"
-path="res://.godot/imported/water_dispenser.png-caf7257e6f363e7e9eb96b2bb81e1673.ctex"
+uid="uid://c3r3b0hjpnyga"
+path="res://.godot/imported/chair_top.png-6e27e17093e0ef0fa956e0c4ac80f2ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/water_dispenser.png"
-dest_files=["res://.godot/imported/water_dispenser.png-caf7257e6f363e7e9eb96b2bb81e1673.ctex"]
+source_file="res://Sprites/chair_top.png"
+dest_files=["res://.godot/imported/chair_top.png-6e27e17093e0ef0fa956e0c4ac80f2ad.ctex"]
 
 [params]
 

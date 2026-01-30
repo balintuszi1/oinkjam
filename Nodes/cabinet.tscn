@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6ivmlykvf3aa"]
 
 [ext_resource type="Script" uid="uid://cjqr2nkkl16qr" path="res://Scripts/cabinet.gd" id="1_1xlb5"]
-[ext_resource type="Texture2D" uid="uid://dovpkaaosmokb" path="res://Sprites/cabinet.png" id="1_d2vu6"]
+[ext_resource type="Texture2D" uid="uid://cgg1oux76sak" path="res://Sprites/cabinet2.png" id="2_2qnvo"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="3_2qnvo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od5wd"]
-size = Vector2(32, 33)
+size = Vector2(17, 33)
 
 [node name="Cabinet" type="Area2D"]
 script = ExtResource("1_1xlb5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -0.5)
-texture = ExtResource("1_d2vu6")
+position = Vector2(-1, -5)
+texture = ExtResource("2_2qnvo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
+position = Vector2(-1.5, -0.5)
 shape = SubResource("RectangleShape2D_od5wd")
 
 [node name="UI" type="Node2D" parent="."]

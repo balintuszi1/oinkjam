@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://62awkxs31uf3"
+path="res://.godot/imported/officeTrack_v2.mp3-acd3cefa0a5ea77cc65d84d30776f36e.mp3str"
+
+[deps]
+
+source_file="res://Other assets/officeTrack_v2.mp3"
+dest_files=["res://.godot/imported/officeTrack_v2.mp3-acd3cefa0a5ea77cc65d84d30776f36e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

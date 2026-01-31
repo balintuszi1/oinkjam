@@ -10,6 +10,8 @@ extends Node2D
 @onready var right_hand_icon = $UI/RightHand
 @onready var left_hand_icon = $UI/LeftHand
 
+@export var background_music: AudioStream
+
 #@export var main_office: PackedScene
 #@export var room1: PackedScene
 
@@ -51,11 +53,12 @@ func _ready() -> void:
 	player.global_position.y = Global.get_floor_y()
 	camera.global_position = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
 	
+	Audio.play_music(background_music)
 	start_timer()
 
 func _process(delta: float) -> void:
 	refresh_objects()
-	camera.global_position = camera.global_position.lerp(camera_target, 0.01)
+	camera.global_position = camera.global_position.lerp(camera_target, 5*delta)
 
 func _on_desk_is_player_working(work: Variant) -> void:
 	player.freeze_movement(work)

@@ -25,6 +25,9 @@ texture = ExtResource("1_1bveb")
 
 [node name="Player" parent="." instance=ExtResource("2_1yvdp")]
 position = Vector2(235, 250)
+speed = 70
+acceleration = 1000
+friction = 1000
 
 [node name="MudPile" parent="." instance=ExtResource("3_6s856")]
 position = Vector2(440, 255)

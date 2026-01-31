@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://osdeoac1tsg0"]
+[gd_scene load_steps=12 format=4 uid="uid://rer8nrep2vnp"]
 
-[ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_m4dcq"]
-[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_m4dcq"]
-[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="3_geovy"]
-[ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_m65rv"]
+[ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_dmdgb"]
+[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_2biaf"]
+[ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="3_m3rc8"]
+[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="4_a2tbh"]
+[ext_resource type="PackedScene" uid="uid://c6ivmlykvf3aa" path="res://Nodes/cabinet.tscn" id="5_2biaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
 size = Vector2(480, 16)
@@ -18,7 +19,7 @@ size = Vector2(16, 144)
 size = Vector2(480, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krrsp"]
-texture = ExtResource("2_m4dcq")
+texture = ExtResource("2_2biaf")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_76n6x"]
@@ -28,7 +29,7 @@ sources/0 = SubResource("TileSetAtlasSource_krrsp")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(0, -73)
-texture = ExtResource("1_m4dcq")
+texture = ExtResource("1_dmdgb")
 region_enabled = true
 region_rect = Rect2(0, 128.27713, 480, 141.72287)
 
@@ -61,10 +62,27 @@ tile_set = SubResource("TileSet_76n6x")
 [node name="Stations" type="Node2D" parent="."]
 position = Vector2(-240, -270)
 
-[node name="Elevator" parent="Stations" instance=ExtResource("8_m65rv")]
+[node name="Elevator" parent="Stations" instance=ExtResource("3_m3rc8")]
 position = Vector2(290, 222)
 
 [node name="Printer" type="Sprite2D" parent="Stations"]
-position = Vector2(48, 238)
-texture = ExtResource("3_geovy")
+position = Vector2(33, 238)
+texture = ExtResource("4_a2tbh")
 flip_h = true
+
+[node name="Printer2" type="Sprite2D" parent="Stations"]
+position = Vector2(62, 238)
+texture = ExtResource("4_a2tbh")
+flip_h = true
+
+[node name="Cabinet" parent="Stations" instance=ExtResource("5_2biaf")]
+position = Vector2(110, 238)
+item = "blue_ink"
+
+[node name="Cabinet2" parent="Stations" instance=ExtResource("5_2biaf")]
+position = Vector2(129, 238)
+item = "magenta_ink"
+
+[node name="Cabinet3" parent="Stations" instance=ExtResource("5_2biaf")]
+position = Vector2(148, 238)
+item = "yellow_ink"

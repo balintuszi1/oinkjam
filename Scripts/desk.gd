@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var progress_UI = $UI
+@onready var ui = $UI
 @onready var progress_bar = $UI/ProgressBar
 @onready var progress_label = $UI/Label
 
@@ -15,8 +15,9 @@ var work_progress = 0
 @export var money_amount = 10
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and working_player and !is_at_desk:
-			begin_work(working_player)
+	if Input.is_action_just_pressed("interact") and working_player and !is_at_desk and Global.current_object == self:
+		begin_work(working_player)
+		take_paper()
 	elif working_player and is_at_desk:
 		if Input.is_action_just_pressed("move_left"):
 			leave_desk(working_player, "left")
@@ -29,16 +30,18 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		working_player = body
+		if !Global.touching_objects.has(self):
+			Global.touching_objects.append(self)
 		progress_label.text = "Press E to work"
-		progress_UI.show()
-		if working_player.has_item("paper"):
-			papers += working_player.has_item("paper")
-			working_player.use_item("paper", working_player.has_item("paper"))
+		ui.show()
 		if work_progress <= 0: progress_bar.hide()
-		#print("Player is at the station")
 
 func _on_body_exited(body: Node2D) -> void:
 	working_player = null
+	if Global.touching_objects.has(self):
+		Global.touching_objects.erase(self)
+	if Global.current_object == self:
+		Global.current_object = null
 
 func work(delta):
 	if !has_paper(): 
@@ -64,11 +67,11 @@ func work(delta):
 			work_progress -= loss_speed * delta
 			update_progress(work_progress)
 		elif !working_player:
-			progress_UI.hide()
+			ui.hide()
 
 func begin_work(player:Node2D):
 	Global.is_player_working.emit(true)
-	player.global_position = Vector2(self.global_position.x, self.global_position.y-16) 
+	player.global_position = Vector2(self.global_position.x, self.global_position.y) 
 	progress_label.text = "Hold SPACE to work"
 	progress_bar.show()
 	is_at_desk = true
@@ -90,13 +93,18 @@ func leave_desk(player:Node2D, direction = null):
 		working_player = player
 		is_at_desk = false
 		progress_label.text = "Press E to work"
-		progress_UI.show()
+		ui.show()
 		Global.is_player_working.emit(false)
 		if work_progress <= 0: progress_bar.hide()
 		#print("Player is at the station")
 
 func update_progress(value):
 	progress_bar.value = value
+	
+func take_paper():
+	if working_player.has_item("paper"):
+		papers += working_player.has_item("paper")
+		working_player.use_item("paper", working_player.has_item("paper"))
 	
 func has_paper():
 	if !requires_paper: return true

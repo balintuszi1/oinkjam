@@ -7,6 +7,8 @@ extends Node2D
 @onready var time_progress_bar = $UI/Time
 @onready var timer = $Timer
 @onready var death_screen = $DeathScreen
+@onready var right_hand_icon = $UI/RightHand
+@onready var left_hand_icon = $UI/LeftHand
 
 #@export var main_office: PackedScene
 #@export var room1: PackedScene
@@ -17,15 +19,32 @@ extends Node2D
 var level = 1
 var money = 0
 var time_left = 60
+var camera_target = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+
+var item_textures = {
+	"empty_paper": "res://Sprites/blue_brick.png",
+	"paper": "res://Sprites/blue_brick.png",
+	"black_ink": "res://Sprites/blue_brick.png",
+	"blue_ink": "res://Sprites/blue_brick.png",
+	"magenta_ink": "res://Sprites/blue_brick.png",
+	"yellow_ink": "res://Sprites/blue_brick.png",
+	"delivery": "res://Sprites/blue_brick.png"
+}
 
 func _ready() -> void:
+	Global.current_floor = 1
+	Global.touching_objects = [] 
+	Global.current_object = null
+	camera_target = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+	
 	death_screen.hide()
 	player = get_player()
-	Global.give_item.connect(_on_give_item)
-	Global.is_player_working.connect(_on_desk_is_player_working)
-	Global.add_money.connect(_on_desk_reward)
-	Global.is_player_in_elevator.connect(_on_player_elevator)
-	Global.move_floors.connect(_on_elevator_move)
+	if not Global.give_item.is_connected(_on_give_item): Global.give_item.connect(_on_give_item)
+	if not Global.is_player_working.is_connected(_on_desk_is_player_working): Global.is_player_working.connect(_on_desk_is_player_working)
+	if not Global.add_money.is_connected(_on_desk_reward): Global.add_money.connect(_on_desk_reward)
+	if not Global.is_player_in_elevator.is_connected(_on_player_elevator): Global.is_player_in_elevator.connect(_on_player_elevator)
+	if not Global.move_floors.is_connected(_on_elevator_move): Global.move_floors.connect(_on_elevator_move)
+	if not Global.refresh_inventory.is_connected(update_inventory_ui): Global.refresh_inventory.connect(update_inventory_ui)
 	
 	create_level()
 	create_player()
@@ -36,6 +55,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	refresh_objects()
+	camera.global_position = camera.global_position.lerp(camera_target, 0.01)
 
 func _on_desk_is_player_working(work: Variant) -> void:
 	player.freeze_movement(work)
@@ -69,6 +89,7 @@ func load_floor(load_level, load_room):
 
 func _on_give_item(item: Variant, amount: Variant) -> void:
 	player.pickup_item(item)
+	update_inventory_ui()
 
 func get_player():
 	if Global.player: return Global.player
@@ -118,7 +139,7 @@ func move_player():
 	player = get_player()
 	print(Global.current_floor)
 	player.global_position = Vector2(player.global_position.x, Global.get_floor_y()-6)
-	camera.global_position = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+	camera_target = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
 	
 func start_timer():
 	time_progress_bar.value = Global.max_timer
@@ -138,7 +159,6 @@ func _on_timer_timeout() -> void:
 		death_screen.show()
 		player.freeze_movement(true)
 		
-		
 func refresh_objects():
 	if player and len(Global.touching_objects) > 0:
 		var closest_object = null
@@ -155,3 +175,19 @@ func refresh_objects():
 			Global.current_object = closest_object
 			if Global.current_object != null:
 				Global.current_object.ui.show()
+				
+func update_inventory_ui():
+	var player_right_hand = Global.player.inventory["right_hand"]["item"]
+	var player_left_hand = Global.player.inventory["left_hand"]["item"]
+	var r_hand_texture = null
+	var l_hand_texture = null
+	if player_right_hand != "none":
+		r_hand_texture = load(item_textures[player_right_hand])
+		right_hand_icon.texture = r_hand_texture
+	else:
+		right_hand_icon.texture = null
+	if player_left_hand != "none":
+		l_hand_texture = load(item_textures[player_left_hand])
+		left_hand_icon.texture = l_hand_texture
+	else:
+		left_hand_icon.texture = null

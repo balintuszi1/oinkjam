@@ -57,6 +57,7 @@ func pickup_item(item):
 		if inventory["left_hand"]["amount"] < hand_capacity[item]:
 			inventory["left_hand"]["item"] = item
 			inventory["left_hand"]["amount"] += 1
+	Global.refresh_inventory.emit()
 			
 func use_item(item, amount:int=1):
 	if inventory["right_hand"]["item"] == item:
@@ -67,6 +68,7 @@ func use_item(item, amount:int=1):
 		inventory["left_hand"]["amount"] -= amount
 		if inventory["left_hand"]["amount"] <= 0:
 			inventory["left_hand"]["item"] = "none"
+	Global.refresh_inventory.emit()
 	
 func has_item(item):
 	if inventory["right_hand"]["item"] == item:

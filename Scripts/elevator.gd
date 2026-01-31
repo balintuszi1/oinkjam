@@ -9,6 +9,7 @@ extends Area2D
 
 var player = null
 var is_in_elevator = false
+static var can_use_elevator = true
 
 func _process(delta: float) -> void:
 	if player:

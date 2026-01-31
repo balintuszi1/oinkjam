@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://dtqkhrtew068i"]
+[gd_scene load_steps=85 format=4 uid="uid://dtqkhrtew068i"]
 
 [ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_od5wd"]
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_0k1p6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="7_o2cca"]
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_o84nh"]
 [ext_resource type="PackedScene" uid="uid://c6ivmlykvf3aa" path="res://Nodes/cabinet.tscn" id="10_0k1p6"]
+[ext_resource type="PackedScene" uid="uid://blsihsqommpwm" path="res://Nodes/paper_deposit.tscn" id="13_urf2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
 size = Vector2(480, 16)
@@ -492,9 +493,10 @@ animations = [{
 metadata/office = true
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(0, -68)
-scale = Vector2(1, 0.5037037)
+position = Vector2(0, -73)
 texture = ExtResource("1_od5wd")
+region_enabled = true
+region_rect = Rect2(0, 128.27713, 480, 141.72287)
 
 [node name="Environment" type="Node2D" parent="."]
 position = Vector2(-240, -270)
@@ -536,7 +538,7 @@ position = Vector2(-240, -270)
 
 [node name="Desk" parent="Stations" instance=ExtResource("2_o84nh")]
 z_index = 1
-position = Vector2(201, 240)
+position = Vector2(194, 240)
 requires_paper = true
 
 [node name="Printer" parent="Stations" instance=ExtResource("3_2vylc")]
@@ -556,18 +558,9 @@ position = Vector2(290, 222)
 position = Vector2(33, 238)
 item = "empty_paper"
 
-[node name="Cabinet2" parent="Stations" instance=ExtResource("10_0k1p6")]
-position = Vector2(53, 238)
-item = "blue_ink"
-
-[node name="Cabinet3" parent="Stations" instance=ExtResource("10_0k1p6")]
-position = Vector2(72, 238)
-item = "magenta_ink"
-
-[node name="Cabinet4" parent="Stations" instance=ExtResource("10_0k1p6")]
-position = Vector2(91, 238)
-item = "yellow_ink"
-
 [node name="Cabinet5" parent="Stations" instance=ExtResource("10_0k1p6")]
 position = Vector2(446, 238)
 item = "black_ink"
+
+[node name="PaperDeposit" parent="Stations" instance=ExtResource("13_urf2f")]
+position = Vector2(247, 244)

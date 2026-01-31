@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://blsihsqommpwm"]
+
+[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="1_a646b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcf3"]
+size = Vector2(35, 44)
+
+[node name="PaperDeposit" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a646b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_vvcf3")

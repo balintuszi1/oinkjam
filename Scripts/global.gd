@@ -6,6 +6,7 @@ signal is_player_working(work)
 signal add_money(amount)
 #Printer and cabinets
 signal give_item(item, amount)
+signal refresh_inventory()
 #Elevator
 signal is_player_in_elevator(value)
 signal move_floors(amount)
@@ -22,8 +23,8 @@ const MAX_FLOORS = 12
 
 var acorns = 0
 var current_floor = 1
-var ground_height = 232
-var window_height = 144
+const ground_height = 232
+const window_height = 144
 var max_timer = 60
 #var is_desk_active = true
 #var is_printer_active = true

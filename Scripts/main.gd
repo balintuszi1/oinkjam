@@ -1,5 +1,6 @@
 extends Node2D
 
+### Nodes ###
 @onready var player = null
 @onready var camera = $Camera2D
 @onready var score_label = $UI/Score
@@ -10,18 +11,22 @@ extends Node2D
 @onready var right_hand_icon = $UI/RightHand
 @onready var left_hand_icon = $UI/LeftHand
 
+### Audio ###
 @export var background_music: AudioStream
 
-#@export var main_office: PackedScene
-#@export var room1: PackedScene
-
+### Level generation ###
 @export var offices: Array[PackedScene] = []
 @export var default_rooms: Array[PackedScene] = []
 
+### Variables ###
 var level = 1
 var money = 0
 var time_left = 60
-var camera_target = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+
+const window_length_mid = 240
+const window_height_mid = 135
+const camere_offset = 60
+var camera_target = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 
 var item_textures = {
 	"empty_paper": "res://Sprites/blue_brick.png",
@@ -33,14 +38,20 @@ var item_textures = {
 	"delivery": "res://Sprites/blue_brick.png"
 }
 
+func get_floor_coordinate(): return (Global.current_floor-1)*Global.window_height
+
 func _ready() -> void:
+	#reset progress
 	Global.current_floor = 1
 	Global.touching_objects = [] 
 	Global.current_object = null
-	camera_target = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+	camera_target = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 	
+	#setup scene
 	death_screen.hide()
 	player = get_player()
+	
+	#connect signals (if not already connected)
 	if not Global.give_item.is_connected(_on_give_item): Global.give_item.connect(_on_give_item)
 	if not Global.is_player_working.is_connected(_on_desk_is_player_working): Global.is_player_working.connect(_on_desk_is_player_working)
 	if not Global.add_money.is_connected(_on_desk_reward): Global.add_money.connect(_on_desk_reward)
@@ -48,13 +59,13 @@ func _ready() -> void:
 	if not Global.move_floors.is_connected(_on_elevator_move): Global.move_floors.connect(_on_elevator_move)
 	if not Global.refresh_inventory.is_connected(update_inventory_ui): Global.refresh_inventory.connect(update_inventory_ui)
 	
-	create_level()
-	create_player()
-	player.global_position.y = Global.get_floor_y()
-	camera.global_position = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+	create_level() #generate map
+	create_player() #place the player
+	player.global_position.y = Global.get_floor_y() #set player position
+	camera.global_position = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 	
-	Audio.play_music(background_music)
-	start_timer()
+	Audio.play_music(background_music) #play background music
+	start_timer() #start the timer
 
 func _process(delta: float) -> void:
 	refresh_objects()
@@ -67,8 +78,8 @@ func _on_player_elevator(value: Variant) -> void:
 	player.freeze_movement(value)
 	
 func _on_elevator_move(amount: Variant) -> void:
-	Global.active_elevator = null
-	Global.current_floor += amount
+	Global.active_elevator = null #sets Global elevator to  null
+	Global.current_floor += amount #in-/decreases our floor by the amount we moved
 	move_player()
 	var next_floor = get_floor(Global.current_floor-1)
 	if next_floor: player.reparent(next_floor)
@@ -139,10 +150,10 @@ func create_level(office_location=1):
 			floors_container.get_child(i).add_child(room)
 
 func move_player():
-	player = get_player()
-	print(Global.current_floor)
+	player = get_player() #find the player Node in the current floor
+	#print(Global.current_floor)
 	player.global_position = Vector2(player.global_position.x, Global.get_floor_y()-6)
-	camera_target = Vector2(240, 135-((Global.current_floor-1)*Global.window_height)+60)
+	camera_target = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 	
 func start_timer():
 	time_progress_bar.value = Global.max_timer

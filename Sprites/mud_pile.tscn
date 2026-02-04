@@ -1,16 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkafkyj6mtwv"]
-
-[ext_resource type="Texture2D" uid="uid://dmqvcaei1jk5y" path="res://icon.svg" id="1_0ysgv"]
+[gd_scene load_steps=2 format=3 uid="uid://bkafkyj6mtwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukecf"]
 size = Vector2(52, 16)
 
 [node name="MudPile" type="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.99999905, 0)
-scale = Vector2(0.40625, 0.140625)
-texture = ExtResource("1_0ysgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)

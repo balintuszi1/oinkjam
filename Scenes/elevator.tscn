@@ -195,6 +195,7 @@ offset_left = -20.0
 offset_top = -29.0
 offset_right = 21.0
 offset_bottom = 30.0
+color = Color(0.038397167, 0.038397167, 0.03839716, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cf2ye")
@@ -235,4 +236,3 @@ texture = ExtResource("3_jd6vs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -29,12 +29,12 @@ const camere_offset = 60
 var camera_target = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 
 var item_textures = {
-	"empty_paper": "res://Sprites/blue_brick.png",
-	"paper": "res://Sprites/blue_brick.png",
-	"black_ink": "res://Sprites/blue_brick.png",
-	"blue_ink": "res://Sprites/blue_brick.png",
-	"magenta_ink": "res://Sprites/blue_brick.png",
-	"yellow_ink": "res://Sprites/blue_brick.png",
+	"empty_paper": "res://Sprites/empty paper.png",
+	"paper": "res://Sprites/empty paper.png",
+	"black_ink": "res://Sprites/blackink.png",
+	"blue_ink": "res://Sprites/blueink.png",
+	"magenta_ink": "res://Sprites/pinkink.png",
+	"yellow_ink": "res://Sprites/yellowink.png",
 	"delivery": "res://Sprites/blue_brick.png"
 }
 
@@ -78,28 +78,25 @@ func _on_player_elevator(value: Variant) -> void:
 	player.freeze_movement(value)
 	
 func _on_elevator_move(amount: Variant) -> void:
-	Global.active_elevator = null #sets Global elevator to  null
-	Global.current_floor += amount #in-/decreases our floor by the amount we moved
-	move_player()
-	var next_floor = get_floor(Global.current_floor-1)
-	if next_floor: player.reparent(next_floor)
-	await get_tree().create_timer(0.1).timeout
-	var next_elevator = get_elevator()
-	Global.active_elevator = next_elevator
-	Global.active_elevator.activate()
-	Global.active_elevator.player = player
+	var next_floor = null
+	var next_elevator = null
 	
-	if Global.active_elevator == null:
-		print("Error: couldn't find elevator on floor: " + str(Global.current_floor-1))
-		return
+	Global.active_elevator = null #sets Global elevator to null
+	Global.current_floor += amount #in-/decreases our floor by the amount we moved
+	player = get_player() #find the player Node in the current floor
+	player.global_position = Vector2(player.global_position.x, Global.get_floor_y()-6)
+	camera_target = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
+	next_floor = get_floor(Global.current_floor-1)
+	if next_floor: player.reparent(next_floor) #moves the player node to be under the current floor
+	await get_tree().create_timer(0.1).timeout
+	next_elevator = get_elevator()
+	Global.active_elevator = next_elevator
+	Global.active_elevator.activate(player)
 
 func _on_desk_reward(amount: Variant) -> void:
 	money += amount
 	add_time(4)
 	score_label.text = "Money: " + str(money)
-
-func load_floor(load_level, load_room):
-	pass
 
 func _on_give_item(item: Variant, amount: Variant) -> void:
 	player.pickup_item(item)
@@ -148,12 +145,6 @@ func create_level(office_location=1):
 		if floors_container.get_child(i).get_child_count() == 0: 
 			var room = default_rooms[i].instantiate()
 			floors_container.get_child(i).add_child(room)
-
-func move_player():
-	player = get_player() #find the player Node in the current floor
-	#print(Global.current_floor)
-	player.global_position = Vector2(player.global_position.x, Global.get_floor_y()-6)
-	camera_target = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 	
 func start_timer():
 	time_progress_bar.value = Global.max_timer

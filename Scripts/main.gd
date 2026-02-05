@@ -147,6 +147,7 @@ func create_level(office_location=1):
 			floors_container.get_child(i).add_child(room)
 	
 func start_timer():
+	time_progress_bar.max_value = Global.max_timer
 	time_progress_bar.value = Global.max_timer
 	time_left = Global.max_timer
 	timer.start()

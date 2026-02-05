@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d23br64uljqjl"
-path="res://.godot/imported/Cloud.png-5232dfe31582eab10eabad0a12a5e0b9.ctex"
+uid="uid://dstivovmw3675"
+path="res://.godot/imported/magenta4.png-a3c6dfbc845a01eb6583f670d1b528d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Cloud.png"
-dest_files=["res://.godot/imported/Cloud.png-5232dfe31582eab10eabad0a12a5e0b9.ctex"]
+source_file="res://Sprites/magenta4.png"
+dest_files=["res://.godot/imported/magenta4.png-a3c6dfbc845a01eb6583f670d1b528d4.ctex"]
 
 [params]
 

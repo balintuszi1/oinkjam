@@ -1,15 +1,12 @@
-[gd_scene load_steps=85 format=4 uid="uid://dtqkhrtew068i"]
+[gd_scene load_steps=82 format=4 uid="uid://dtqkhrtew068i"]
 
 [ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_od5wd"]
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_0k1p6"]
 [ext_resource type="PackedScene" uid="uid://dahfbw3y7rtn1" path="res://Nodes/desk.tscn" id="2_o84nh"]
 [ext_resource type="Texture2D" uid="uid://bbtpp6adtv34a" path="res://Sprites/Clock.png" id="3_0sfbk"]
 [ext_resource type="PackedScene" uid="uid://8uuun8iopgac" path="res://Nodes/printer.tscn" id="3_2vylc"]
-[ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_4luf0"]
+[ext_resource type="Script" uid="uid://dfe64igi118f2" path="res://Scripts/clock.gd" id="4_mpa0i"]
 [ext_resource type="Texture2D" uid="uid://d0pgwubig5k84" path="res://Sprites/water_dispenser.png" id="4_vkynm"]
-[ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://Sprites/printer_paper2.png" id="5_q644x"]
-[ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://Sprites/printer_paper3.png" id="6_rs1ao"]
-[ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="7_o2cca"]
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_o84nh"]
 [ext_resource type="PackedScene" uid="uid://c6ivmlykvf3aa" path="res://Nodes/cabinet.tscn" id="10_0k1p6"]
 [ext_resource type="PackedScene" uid="uid://blsihsqommpwm" path="res://Nodes/paper_deposit.tscn" id="13_urf2f"]
@@ -486,7 +483,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 0.05
 }]
 
 [node name="Office" type="Node2D"]
@@ -524,10 +521,11 @@ position = Vector2(240, 270)
 tile_map_data = PackedByteArray("AADx//7/AAAAAAAAAADx//3/AAAAAAAAAADx//z/AAAAAAAAAADx//v/AAAAAAAAAADx//r/AAAAAAAAAADx//n/AAAAAAAAAADx//j/AAAAAAAAAADx//f/AAAAAAAAAAAOAPf/AAAAAAAAAAAOAPj/AAAAAAAAAAAOAPn/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAADx////AAAAAAAAAADy////AAAAAAAAAADz////AAAAAAAAAAD0////AAAAAAAAAAD1////AAAAAAAAAAD2////AAAAAAAAAAD3////AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAD8//f/AAAAAAAAAAD7//f/AAAAAAAAAAD6//f/AAAAAAAAAAD5//f/AAAAAAAAAAD4//f/AAAAAAAAAAD3//f/AAAAAAAAAAD2//f/AAAAAAAAAAD1//f/AAAAAAAAAAD0//f/AAAAAAAAAADz//f/AAAAAAAAAADy//f/AAAAAAAAAAD9//f/AAAAAAAAAAD+//f/AAAAAAAAAAD///f/AAAAAAAAAAAAAPf/AAAAAAAAAAABAPf/AAAAAAAAAAACAPf/AAAAAAAAAAADAPf/AAAAAAAAAAAEAPf/AAAAAAAAAAAFAPf/AAAAAAAAAAAGAPf/AAAAAAAAAAAHAPf/AAAAAAAAAAAIAPf/AAAAAAAAAAAJAPf/AAAAAAAAAAAKAPf/AAAAAAAAAAALAPf/AAAAAAAAAAAMAPf/AAAAAAAAAAANAPf/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vkynm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment"]
+[node name="Clock" type="AnimatedSprite2D" parent="Environment"]
 position = Vector2(198, 162)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g1egu")
+script = ExtResource("4_mpa0i")
 
 [node name="WaterDispenser" type="Sprite2D" parent="Environment"]
 position = Vector2(343, 230)
@@ -546,10 +544,6 @@ position = Vector2(405, 237)
 requires_paper = true
 requires_black = true
 requires_color = true
-texture_paper_1 = ExtResource("4_4luf0")
-texture_paper_2 = ExtResource("5_q644x")
-texture_paper_3 = ExtResource("6_rs1ao")
-texture_paper_loaded = ExtResource("7_o2cca")
 
 [node name="Elevator" parent="Stations" instance=ExtResource("8_o84nh")]
 position = Vector2(290, 222)
@@ -562,5 +556,5 @@ item = "empty_paper"
 position = Vector2(446, 238)
 item = "black_ink"
 
-[node name="PaperDeposit" parent="Stations" instance=ExtResource("13_urf2f")]
+[node name="DeliveryStation" parent="Stations" instance=ExtResource("13_urf2f")]
 position = Vector2(247, 244)

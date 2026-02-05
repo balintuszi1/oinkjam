@@ -1,25 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://8uuun8iopgac"]
+[gd_scene load_steps=21 format=3 uid="uid://8uuun8iopgac"]
 
 [ext_resource type="Script" uid="uid://bgmaau2im4brm" path="res://Scripts/printer.gd" id="1_wndy4"]
+[ext_resource type="Texture2D" uid="uid://i0r2dpi20wxj" path="res://Sprites/printer_base.png" id="2_ekavr"]
 [ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="2_gshth"]
-[ext_resource type="Texture2D" uid="uid://btbeubvtja42f" path="res://Sprites/printer_unloaded.png" id="2_wndy4"]
 [ext_resource type="Texture2D" uid="uid://dm6v3s4ge0xj8" path="res://Sprites/printer_loadpaper.png" id="3_ekavr"]
+[ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://Sprites/printer_paper2.png" id="3_n0bpn"]
+[ext_resource type="Texture2D" uid="uid://xktqk3h0hk7m" path="res://Sprites/printer_paper3.png" id="4_6a6q2"]
 [ext_resource type="Texture2D" uid="uid://ctwvp2hsnjcb6" path="res://Sprites/printer_paperfront.png" id="4_yks5k"]
+[ext_resource type="Texture2D" uid="uid://d1028quinhe41" path="res://Sprites/blue1.png" id="6_5xglm"]
+[ext_resource type="Texture2D" uid="uid://bf8bxq2f7607d" path="res://Sprites/blue2.png" id="7_lrc5d"]
+[ext_resource type="Texture2D" uid="uid://exfuhy6bqcx6" path="res://Sprites/blue3.png" id="8_iptxn"]
+[ext_resource type="Texture2D" uid="uid://dstivovmw3675" path="res://Sprites/magenta4.png" id="9_xo5s1"]
+[ext_resource type="Texture2D" uid="uid://dun68fe5d3r2h" path="res://Sprites/magenta2.png" id="10_tnt08"]
+[ext_resource type="Texture2D" uid="uid://cdiy3vetcogwa" path="res://Sprites/magenta1.png" id="11_3mm4f"]
+[ext_resource type="Texture2D" uid="uid://oau18jansn2q" path="res://Sprites/yellow1.png" id="12_ab8vv"]
+[ext_resource type="Texture2D" uid="uid://cl82loktn23t7" path="res://Sprites/yellow2.png" id="13_ag7bx"]
+[ext_resource type="Texture2D" uid="uid://bl6ajx3y2pxln" path="res://Sprites/yellow3.png" id="14_ollcb"]
+[ext_resource type="Texture2D" uid="uid://dxus331hcrp83" path="res://Sprites/black1.png" id="15_rbgn0"]
+[ext_resource type="Texture2D" uid="uid://chl1xie7005ya" path="res://Sprites/black2.png" id="16_oa0ca"]
+[ext_resource type="Texture2D" uid="uid://xowhc1fm44n8" path="res://Sprites/black3.png" id="17_2lhg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(39, 40)
 
 [node name="Printer" type="Area2D"]
 script = ExtResource("1_wndy4")
+texture_paper_1 = ExtResource("4_yks5k")
+texture_paper_2 = ExtResource("3_n0bpn")
+texture_paper_3 = ExtResource("4_6a6q2")
+texture_paper_loaded = ExtResource("3_ekavr")
+blue_1 = ExtResource("6_5xglm")
+blue_2 = ExtResource("7_lrc5d")
+blue_3 = ExtResource("8_iptxn")
+magenta_1 = ExtResource("9_xo5s1")
+magenta_2 = ExtResource("10_tnt08")
+magenta_3 = ExtResource("11_3mm4f")
+yellow_1 = ExtResource("12_ab8vv")
+yellow_2 = ExtResource("13_ag7bx")
+yellow_3 = ExtResource("14_ollcb")
+black_1 = ExtResource("15_rbgn0")
+black_2 = ExtResource("16_oa0ca")
+black_3 = ExtResource("17_2lhg6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wndy4")
+texture = ExtResource("2_ekavr")
 
 [node name="input" type="Sprite2D" parent="."]
 texture = ExtResource("3_ekavr")
 
 [node name="output" type="Sprite2D" parent="."]
 texture = ExtResource("4_yks5k")
+
+[node name="blue" type="Sprite2D" parent="."]
+
+[node name="magenta" type="Sprite2D" parent="."]
+
+[node name="yellow" type="Sprite2D" parent="."]
+
+[node name="black" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-11.5, -4)

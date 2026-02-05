@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://blsihsqommpwm"]
+[gd_scene load_steps=5 format=3 uid="uid://blsihsqommpwm"]
 
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="1_a646b"]
+[ext_resource type="Script" uid="uid://ckdos6fxmmvbm" path="res://Scripts/delivery_station.gd" id="1_nu1an"]
+[ext_resource type="Texture2D" uid="uid://cl5ei56ilysga" path="res://Sprites/printer_paper2.png" id="3_33d2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcf3"]
 size = Vector2(35, 44)
 
-[node name="PaperDeposit" type="Area2D"]
+[node name="DeliveryStation" type="Area2D"]
+script = ExtResource("1_nu1an")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1, 1.125)
 texture = ExtResource("1_a646b")
+
+[node name="papers" type="Sprite2D" parent="."]
+position = Vector2(11, -3)
+texture = ExtResource("3_33d2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -12)

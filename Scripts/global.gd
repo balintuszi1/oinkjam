@@ -10,6 +10,8 @@ signal refresh_inventory()
 #Elevator
 signal is_player_in_elevator(value)
 signal move_floors(amount)
+#Delivery system
+#signal add_document()
 
 ### VARIABLES ###
 var stored_data = {}
@@ -25,9 +27,8 @@ var acorns = 0
 var current_floor = 1
 const ground_height = 232
 const window_height = 144
-var max_timer = 60
-#var is_desk_active = true
-#var is_printer_active = true
+var max_timer = 120
+
 var printer_requires_paper = true
 var printer_requires_blue = false
 var printer_requires_magenta = false

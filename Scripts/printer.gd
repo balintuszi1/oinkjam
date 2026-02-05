@@ -7,6 +7,10 @@ extends Area2D
 @onready var printer_timer = $Timer
 @onready var front_tray = $output
 @onready var paper_tray = $input
+@onready var blue_ink = $blue
+@onready var magenta_ink = $magenta
+@onready var yellow_ink = $yellow
+@onready var black_ink = $black
 
 @export var requires_paper = false
 @export var requires_black = false
@@ -26,6 +30,18 @@ var is_printing = false
 @export var texture_paper_2: Texture2D
 @export var texture_paper_3: Texture2D
 @export var texture_paper_loaded: Texture2D
+@export var blue_1: Texture2D
+@export var blue_2: Texture2D
+@export var blue_3: Texture2D
+@export var magenta_1: Texture2D
+@export var magenta_2: Texture2D
+@export var magenta_3: Texture2D
+@export var yellow_1: Texture2D
+@export var yellow_2: Texture2D
+@export var yellow_3: Texture2D
+@export var black_1: Texture2D
+@export var black_2: Texture2D
+@export var black_3: Texture2D
 
 var player = null
 
@@ -127,6 +143,23 @@ func update_texture():
 		paper_tray.texture = texture_paper_loaded
 	else:
 		paper_tray.texture = null
+		
+	if blue >= 15: blue_ink.texture = blue_3
+	elif blue >= 10: blue_ink.texture = blue_2
+	elif blue >= 5: blue_ink.texture = blue_1
+	else: blue_ink.texture = null
+	if magenta >= 15: magenta_ink.texture = magenta_3
+	elif magenta >= 10: magenta_ink.texture = magenta_2
+	elif magenta >= 5: magenta_ink.texture = magenta_1
+	else: magenta_ink.texture = null
+	if yellow >= 15: yellow_ink.texture = yellow_3
+	elif yellow >= 10: yellow_ink.texture = yellow_2
+	elif yellow >= 5: yellow_ink.texture = yellow_1
+	else: yellow_ink.texture = null
+	if black >= 15: black_ink.texture = black_3
+	elif black >= 10: black_ink.texture = black_2
+	elif black >= 5: black_ink.texture = black_3
+	else: black_ink.texture = null
 	
 func update_text():
 	if finished_count > 0 or finished_count == -1:

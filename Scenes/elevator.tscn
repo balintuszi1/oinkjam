@@ -194,10 +194,11 @@ script = ExtResource("1_7i85y")
 offset_left = -20.0
 offset_top = -29.0
 offset_right = 21.0
-offset_bottom = 30.0
+offset_bottom = 32.0
 color = Color(0.038397167, 0.038397167, 0.03839716, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_cf2ye")
 animation = &"idle"
 

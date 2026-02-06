@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=4 uid="uid://dior30iis03kr"]
+
+[ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_wvs2w"]
+[ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_toerw"]
+[ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="3_05pw1"]
+[ext_resource type="Texture2D" uid="uid://drre3w32nufdv" path="res://Sprites/pigSprite2.png" id="4_toerw"]
+[ext_resource type="Texture2D" uid="uid://baf0gvi4d7nef" path="res://Sprites/desk2.png" id="5_05pw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(480, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(16, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21xkr"]
+size = Vector2(16, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
+size = Vector2(480, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krrsp"]
+texture = ExtResource("2_toerw")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_76n6x"]
+sources/0 = SubResource("TileSetAtlasSource_krrsp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q7si"]
+size = Vector2(87, 40)
+
+[node name="Room" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, -73)
+texture = ExtResource("1_wvs2w")
+region_enabled = true
+region_rect = Rect2(0, 128.27713, 480, 141.72287)
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2(-240, -270)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment"]
+
+[node name="Ceiling" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(240, 134)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(8, 198)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="WallRight" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(472, 198)
+shape = SubResource("RectangleShape2D_21xkr")
+
+[node name="Floor" type="CollisionShape2D" parent="Environment/StaticBody2D"]
+position = Vector2(240, 262)
+shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Environment"]
+position = Vector2(240, 270)
+tile_map_data = PackedByteArray("AADx//7/AAAAAAAAAADx//3/AAAAAAAAAADx//z/AAAAAAAAAADx//v/AAAAAAAAAADx//r/AAAAAAAAAADx//n/AAAAAAAAAADx//j/AAAAAAAAAADx//f/AAAAAAAAAAAOAPf/AAAAAAAAAAAOAPj/AAAAAAAAAAAOAPn/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAADx////AAAAAAAAAADy////AAAAAAAAAADz////AAAAAAAAAAD0////AAAAAAAAAAD1////AAAAAAAAAAD2////AAAAAAAAAAD3////AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAADy//f/AAAAAAAAAADz//f/AAAAAAAAAAD0//f/AAAAAAAAAAD1//f/AAAAAAAAAAD2//f/AAAAAAAAAAD3//f/AAAAAAAAAAD4//f/AAAAAAAAAAD5//f/AAAAAAAAAAD6//f/AAAAAAAAAAD7//f/AAAAAAAAAAD8//f/AAAAAAAAAAD9//f/AAAAAAAAAAD+//f/AAAAAAAAAAD///f/AAAAAAAAAAAAAPf/AAAAAAAAAAABAPf/AAAAAAAAAAACAPf/AAAAAAAAAAADAPf/AAAAAAAAAAAEAPf/AAAAAAAAAAAFAPf/AAAAAAAAAAAGAPf/AAAAAAAAAAAHAPf/AAAAAAAAAAAIAPf/AAAAAAAAAAAJAPf/AAAAAAAAAAAKAPf/AAAAAAAAAAALAPf/AAAAAAAAAAAMAPf/AAAAAAAAAAANAPf/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_76n6x")
+
+[node name="Stations" type="Node2D" parent="."]
+position = Vector2(-240, -270)
+
+[node name="Elevator" parent="Stations" instance=ExtResource("3_05pw1")]
+position = Vector2(290, 222)
+
+[node name="DeliveryDesk" type="Area2D" parent="."]
+position = Vector2(-96, -26)
+
+[node name="Pig" type="Sprite2D" parent="DeliveryDesk"]
+position = Vector2(0, -10)
+texture = ExtResource("4_toerw")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 31.160725)
+
+[node name="Desk" type="Sprite2D" parent="DeliveryDesk"]
+texture = ExtResource("5_05pw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryDesk"]
+position = Vector2(-1.5, -10)
+shape = SubResource("RectangleShape2D_3q7si")

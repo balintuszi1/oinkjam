@@ -1,10 +1,10 @@
 extends Area2D
 
-#@onready var ui = $UI
-#@onready var label = $UI/Label
+@onready var ui = $UI
+@onready var label = $UI/Label
 
 @export var items_count = 0
-@export var item = "none"
+@export var item = "delivery"
 @export var amount = 1
 
 var player = null
@@ -22,7 +22,7 @@ func _on_body_exited(body: Node2D) -> void:
 			Global.touching_objects.erase(self)
 		if Global.current_object == self:
 			Global.current_object = null
-			#ui.hide()
+			ui.hide()
 
 func _ready() -> void:
 	if not Global.add_money.is_connected(add_document): Global.add_money.connect(add_document)
@@ -37,10 +37,10 @@ func give_item():
 		Global.give_item.emit(item, amount)
 		if items_count >= amount:
 			items_count -= amount
-		#if items_count == 0:
-			#label.text = "Empty!"
+		if items_count == 0:
+			label.text = ""
 	
-func add_document():
+func add_document(money_amount=0):
 	if items_count != -1: items_count += 1
 	
 func set_text():

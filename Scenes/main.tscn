@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://2ga7mnpgn7xi"]
+[gd_scene load_steps=18 format=4 uid="uid://2ga7mnpgn7xi"]
 
 [ext_resource type="PackedScene" uid="uid://o0ik5522xass" path="res://Nodes/player.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://ytqt6bnn05yw" path="res://Scripts/main.gd" id="1_jjvhh"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b2pdnre4bw3as" path="res://Nodes/death_scene.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://rer8nrep2vnp" path="res://Nodes/ink_storage.tscn" id="6_hptm8"]
 [ext_resource type="PackedScene" uid="uid://b3vv1487ecanp" path="res://Nodes/pause_menu.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://dior30iis03kr" path="res://Nodes/manager_officeroom.tscn" id="8_fdnlq"]
 [ext_resource type="TileSet" uid="uid://brbf7i7o2jn6" path="res://Other assets/farmTileMap.tres" id="12_6iyac"]
 
 [sub_resource type="Gradient" id="Gradient_kry3j"]
@@ -34,7 +35,7 @@ fill_to = Vector2(0, 1)
 script = ExtResource("1_jjvhh")
 background_music = ExtResource("2_d1ilt")
 offices = Array[PackedScene]([null, ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), null])
-default_rooms = Array[PackedScene]([ExtResource("3_ynf5e"), ExtResource("5_21xkr"), ExtResource("5_21xkr"), ExtResource("4_6bp64"), ExtResource("4_6bp64"), ExtResource("4_6bp64"), ExtResource("5_21xkr"), ExtResource("6_hptm8"), ExtResource("5_21xkr"), ExtResource("4_6bp64"), ExtResource("5_21xkr"), ExtResource("4_6bp64")])
+default_rooms = Array[PackedScene]([ExtResource("3_ynf5e"), ExtResource("5_21xkr"), ExtResource("5_21xkr"), ExtResource("4_6bp64"), ExtResource("4_6bp64"), ExtResource("4_6bp64"), ExtResource("5_21xkr"), ExtResource("6_hptm8"), ExtResource("5_21xkr"), ExtResource("4_6bp64"), ExtResource("5_21xkr"), ExtResource("8_fdnlq")])
 
 [node name="Player" parent="." instance=ExtResource("1_bo1nx")]
 position = Vector2(104, 230)

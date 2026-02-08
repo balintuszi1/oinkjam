@@ -16,3 +16,12 @@ func play_music(stream: AudioStream, pitch: float = 1.0):
 		add_child(music_player)
 	music_player.stream = stream
 	music_player.play()
+
+func play_ambience(stream: AudioStream, pitch: float = 1.0):
+	var music_player = get_node_or_null("MusicAmbiencePlayer")
+	if not music_player:
+		music_player = AudioStreamPlayer.new()
+		music_player.name = "MusicAmbiencePlayer"
+		add_child(music_player)
+	music_player.stream = stream
+	music_player.play()

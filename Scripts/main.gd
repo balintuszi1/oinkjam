@@ -13,6 +13,7 @@ extends Node2D
 
 ### Audio ###
 @export var background_music: AudioStream
+@export var background_ambience: AudioStream
 
 ### Level generation ###
 @export var offices: Array[PackedScene] = []
@@ -65,6 +66,7 @@ func _ready() -> void:
 	camera.global_position = Vector2(window_length_mid, window_height_mid-(get_floor_coordinate())+camere_offset)
 	
 	Audio.play_music(background_music) #play background music
+	Audio.play_ambience(background_ambience)
 	start_timer() #start the timer
 
 func _process(delta: float) -> void:
@@ -95,7 +97,7 @@ func _on_elevator_move(amount: Variant) -> void:
 
 func _on_desk_reward(amount: Variant) -> void:
 	money += amount
-	add_time(4)
+	add_time(6)
 	score_label.text = "Money: " + str(money)
 
 func _on_give_item(item: Variant, amount: Variant) -> void:
@@ -153,7 +155,7 @@ func start_timer():
 	timer.start()
 
 func add_time(amount):
-	time_left += amount
+	if time_progress_bar.value < time_progress_bar.max_value: time_left += amount
 	time_progress_bar.value = time_left
 
 func _on_timer_timeout() -> void:

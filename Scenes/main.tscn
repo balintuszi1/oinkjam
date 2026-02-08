@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://2ga7mnpgn7xi"]
+[gd_scene load_steps=19 format=4 uid="uid://2ga7mnpgn7xi"]
 
 [ext_resource type="PackedScene" uid="uid://o0ik5522xass" path="res://Nodes/player.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://ytqt6bnn05yw" path="res://Scripts/main.gd" id="1_jjvhh"]
-[ext_resource type="AudioStream" uid="uid://62awkxs31uf3" path="res://Other assets/officeTrack_v2.mp3" id="2_d1ilt"]
+[ext_resource type="AudioStream" uid="uid://caih4k21fgyy2" path="res://Other assets/officeTrack_v3.mp3" id="2_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://dtqkhrtew068i" path="res://Nodes/office.tscn" id="3_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://brnkj01jnx3ju" path="res://Other assets/officeAmbience.mp3" id="3_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://c1br68dybkeri" path="res://Nodes/lobby_room.tscn" id="3_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://t3l346gahe7j" path="res://Nodes/generic_room2.tscn" id="4_6bp64"]
 [ext_resource type="PackedScene" uid="uid://osdeoac1tsg0" path="res://Nodes/generic_room.tscn" id="5_21xkr"]
@@ -16,24 +17,25 @@
 
 [sub_resource type="Gradient" id="Gradient_kry3j"]
 offsets = PackedFloat32Array(0, 0.78169, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.143744, 0.0410336, 0.0775372, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.0025921448, 0.1523042, 2.4065375e-08, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_21xkr"]
 gradient = SubResource("Gradient_kry3j")
-width = 24
+width = 16
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_6bp64"]
-colors = PackedColorArray(0.961006, 0.487587, 0.7945, 1, 0.427149, 0.000139066, 0.43269, 1)
+colors = PackedColorArray(0.252055, 0.8111021, 0, 1, 0.739028, 1, 0.5284817, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_344ge"]
 gradient = SubResource("Gradient_6bp64")
-width = 24
+width = 16
 fill_to = Vector2(0, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jjvhh")
-background_music = ExtResource("2_d1ilt")
+background_music = ExtResource("2_jkdf5")
+background_ambience = ExtResource("3_wsu2k")
 offices = Array[PackedScene]([null, ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), ExtResource("3_jjvhh"), null])
 default_rooms = Array[PackedScene]([ExtResource("3_ynf5e"), ExtResource("5_21xkr"), ExtResource("5_21xkr"), ExtResource("4_6bp64"), ExtResource("4_6bp64"), ExtResource("4_6bp64"), ExtResource("5_21xkr"), ExtResource("6_hptm8"), ExtResource("5_21xkr"), ExtResource("4_6bp64"), ExtResource("5_21xkr"), ExtResource("8_fdnlq")])
 
@@ -47,8 +49,8 @@ friction = 800
 
 [node name="Time" type="TextureProgressBar" parent="UI"]
 anchors_preset = -1
-anchor_right = 0.05
-anchor_bottom = 0.237037
+anchor_right = 0.033333335
+anchor_bottom = 0.23703703
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 4.0

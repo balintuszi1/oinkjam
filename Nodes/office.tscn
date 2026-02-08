@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://dtqkhrtew068i"]
+[gd_scene load_steps=81 format=4 uid="uid://dtqkhrtew068i"]
 
 [ext_resource type="Texture2D" uid="uid://0hpgh30b5f4s" path="res://Sprites/placeholderBG.png" id="1_od5wd"]
 [ext_resource type="Texture2D" uid="uid://dbvm7mrmihvwg" path="res://Sprites/blue_brick.png" id="2_0k1p6"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://d0pgwubig5k84" path="res://Sprites/water_dispenser.png" id="4_vkynm"]
 [ext_resource type="PackedScene" uid="uid://budggg3mpex3v" path="res://Scenes/elevator.tscn" id="8_o84nh"]
 [ext_resource type="PackedScene" uid="uid://c6ivmlykvf3aa" path="res://Nodes/cabinet.tscn" id="10_0k1p6"]
-[ext_resource type="PackedScene" uid="uid://blsihsqommpwm" path="res://Nodes/paper_deposit.tscn" id="13_urf2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
 size = Vector2(480, 16)
@@ -555,6 +554,3 @@ item = "empty_paper"
 [node name="Cabinet5" parent="Stations" instance=ExtResource("10_0k1p6")]
 position = Vector2(446, 238)
 item = "black_ink"
-
-[node name="DeliveryStation" parent="Stations" instance=ExtResource("13_urf2f")]
-position = Vector2(247, 244)

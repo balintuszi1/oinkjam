@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://c7yssvwyn1lsi"]
+[gd_scene load_steps=8 format=4 uid="uid://c7yssvwyn1lsi"]
 
 [ext_resource type="TileSet" uid="uid://brbf7i7o2jn6" path="res://Other assets/farmTileMap.tres" id="1_78d4p"]
 [ext_resource type="PackedScene" uid="uid://ctf6btxsfrny5" path="res://Nodes/player_farm.tscn" id="2_1yvdp"]
@@ -7,17 +7,27 @@
 [ext_resource type="PackedScene" uid="uid://b3vv1487ecanp" path="res://Nodes/pause_menu.tscn" id="5_78d4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6s856"]
-size = Vector2(500, 28)
+size = Vector2(500, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78d4p"]
+size = Vector2(18, 177)
 
 [node name="Farm" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(0, 303)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(240, 4)
+position = Vector2(240, -25.5)
 shape = SubResource("RectangleShape2D_6s856")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, -107)
+shape = SubResource("RectangleShape2D_78d4p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(473, -107)
+shape = SubResource("RectangleShape2D_78d4p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(0, -19)
@@ -43,3 +53,4 @@ script = ExtResource("4_30eac")
 visible = false
 
 [connection signal="body_entered" from="MudPile" to="MudPile" method="_on_body_entered"]
+[connection signal="body_exited" from="MudPile" to="MudPile" method="_on_body_exited"]

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkafkyj6mtwv"]
+[gd_scene load_steps=3 format=3 uid="uid://bkafkyj6mtwv"]
+
+[ext_resource type="Theme" uid="uid://mquj80rurj05" path="res://theme.tres" id="1_1tleb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukecf"]
 size = Vector2(52, 16)
@@ -8,3 +10,20 @@ size = Vector2(52, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_ukecf")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -27.0
+offset_right = 26.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_1tleb")
+text = "Press E to enter"

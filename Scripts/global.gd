@@ -27,7 +27,7 @@ var acorns = 0
 var current_floor = 1
 const ground_height = 232
 const window_height = 144
-var max_timer = 60
+var max_timer = 75
 
 var printer_requires_paper = true
 var printer_requires_blue = false

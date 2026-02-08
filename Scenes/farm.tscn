@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://c7yssvwyn1lsi"]
+[gd_scene load_steps=7 format=4 uid="uid://c7yssvwyn1lsi"]
 
 [ext_resource type="TileSet" uid="uid://brbf7i7o2jn6" path="res://Other assets/farmTileMap.tres" id="1_78d4p"]
 [ext_resource type="PackedScene" uid="uid://ctf6btxsfrny5" path="res://Nodes/player_farm.tscn" id="2_1yvdp"]
 [ext_resource type="PackedScene" uid="uid://bkafkyj6mtwv" path="res://Nodes/mud_pile.tscn" id="3_6s856"]
-[ext_resource type="Script" uid="uid://30rhd1aonq7a" path="res://Scripts/mud_pile.gd" id="4_30eac"]
 [ext_resource type="PackedScene" uid="uid://b3vv1487ecanp" path="res://Nodes/pause_menu.tscn" id="5_78d4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6s856"]
@@ -47,7 +46,6 @@ friction = 1000
 
 [node name="MudPile" parent="." instance=ExtResource("3_6s856")]
 position = Vector2(444, 245)
-script = ExtResource("4_30eac")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_78d4p")]
 visible = false

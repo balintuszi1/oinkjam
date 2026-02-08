@@ -3,6 +3,8 @@ extends Area2D
 @onready var ui = $UI
 @onready var label = $UI/Label
 
+@export var sound: AudioStream
+
 @export var items_count = -1
 @export var item = "none"
 @export var amount = 1
@@ -39,6 +41,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and Global.current_object == self:
 		give_item()
+		Audio.play_sfx(sound)
 				
 func give_item():
 	if items_count == -1 or items_count > 0:

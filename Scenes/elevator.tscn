@@ -1,7 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://budggg3mpex3v"]
+[gd_scene load_steps=32 format=3 uid="uid://budggg3mpex3v"]
 
 [ext_resource type="Script" uid="uid://dyu5t76mn2c3u" path="res://Scripts/elevator.gd" id="1_7i85y"]
+[ext_resource type="AudioStream" uid="uid://b4biyyde6q0gn" path="res://Other assets/elevatorDoor.mp3" id="2_ehl1p"]
 [ext_resource type="Texture2D" uid="uid://dmdfffjmhmabc" path="res://Sprites/up_arrow.png" id="3_1gjip"]
+[ext_resource type="AudioStream" uid="uid://bluexe3xwwyyi" path="res://Other assets/elevatorChime.mp3" id="3_i2rfo"]
 [ext_resource type="Texture2D" uid="uid://olgxvqe5w2gc" path="res://Sprites/down_arrow.png" id="3_jd6vs"]
 [ext_resource type="Texture2D" uid="uid://dvtgu5mba3ogq" path="res://Sprites/Elevator_v2_frame-Sheet.png" id="3_sdfrh"]
 
@@ -181,7 +183,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i85y"]
@@ -189,6 +191,8 @@ size = Vector2(46, 64)
 
 [node name="Elevator" type="Area2D"]
 script = ExtResource("1_7i85y")
+door_sound = ExtResource("2_ehl1p")
+chime = ExtResource("3_i2rfo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -20.0
@@ -200,7 +204,7 @@ color = Color(0.038397167, 0.038397167, 0.03839716, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_cf2ye")
-animation = &"idle"
+animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7i85y")

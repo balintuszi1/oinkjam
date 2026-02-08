@@ -5,6 +5,8 @@ extends Area2D
 @onready var down_arrow = $UI/Down
 @onready var sprite = $AnimatedSprite2D #elevator door
 
+@export var door_sound: AudioStream
+@export var chime: AudioStream
 @export var offset_y = 0 #222-Global.ground_height #substarct elevator height from the ground height
 @export var offset_x = 0
 
@@ -33,6 +35,7 @@ func _on_body_entered(body: Node2D) -> void:
 		is_in_range = true
 		is_door_open = false
 		sprite.play("open")
+		Audio.play_sfx(door_sound)
 		await sprite.animation_finished
 		is_door_open = true
 		
@@ -43,6 +46,7 @@ func _on_body_exited(body: Node2D) -> void:
 		is_in_range = false
 		is_door_open = false
 		sprite.play_backwards("open")
+		Audio.play_sfx(door_sound)
 		await sprite.animation_finished
 
 func activate(body):
@@ -64,6 +68,7 @@ func move_elevator(num):
 	await sprite.animation_finished
 	Global.move_floors.emit(num)
 	Global.player.hide()
+	Audio.play_sfx(chime)
 	is_player_inside = false
 	player = null
 	is_in_range = false

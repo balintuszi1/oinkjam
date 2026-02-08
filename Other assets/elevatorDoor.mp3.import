@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4biyyde6q0gn"
+path="res://.godot/imported/elevatorDoor.mp3-4af5d80eb1da056765c3ac9852ee59ee.mp3str"
+
+[deps]
+
+source_file="res://Other assets/elevatorDoor.mp3"
+dest_files=["res://.godot/imported/elevatorDoor.mp3-4af5d80eb1da056765c3ac9852ee59ee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

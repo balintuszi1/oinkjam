@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bluexe3xwwyyi"
+path="res://.godot/imported/elevatorChime.mp3-49fe0b58a308bbdeefa734c7dc4bc56a.mp3str"
+
+[deps]
+
+source_file="res://Other assets/elevatorChime.mp3"
+dest_files=["res://.godot/imported/elevatorChime.mp3-49fe0b58a308bbdeefa734c7dc4bc56a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

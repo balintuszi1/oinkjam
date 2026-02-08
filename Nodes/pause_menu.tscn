@@ -44,6 +44,7 @@ theme = ExtResource("2_g8hx7")
 text = "Close"
 
 [node name="OptionsButton" type="Button" parent="."]
+visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
